@@ -1,8 +1,7 @@
-package mainfile;
+package game;
 
 import java.io.IOException;
 import gfxproc.Gfx;
-import game.*;
 public class Update implements Runnable{
 	public boolean running;
 	
