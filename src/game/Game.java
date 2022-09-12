@@ -17,7 +17,7 @@ public class Game {
     Scanner kay;
 	public Game() throws Exception {
 		
-		ascii = Funny.fileread("C:\\Users\\roe.appelqvist\\Desktop\\java\\steffe.txt");
+		ascii = Funny.fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");
 		thand = new Tailpiece[60];
 		points = 0;
 	}
