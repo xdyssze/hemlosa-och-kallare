@@ -16,9 +16,9 @@ public class Logcreator {
     		DateTimeFormatter d = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
     		LocalDateTime da = LocalDateTime.now();
     		date = d.format(da);
-    		File funny = new File(date + ".txt");
+    		File funny = new File(System.getProperty("user.dir") + "\\log\\" + date + ".txt");
     		
-    		fname = Path.of(date + ".txt");
+    		fname = Path.of(System.getProperty("user.dir") + "\\log\\" + date + ".txt");
     		try {
     		funny.createNewFile();
     		
