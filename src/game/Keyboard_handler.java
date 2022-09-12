@@ -8,7 +8,7 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 public class Keyboard_handler implements NativeKeyListener {
 	static char[] keyq;
 	static byte ciq;
-    public static void main() {
+    public static void main(String[] args) {
     	ciq = 0;
     	keyq = new char[5];
     	for(int i = 0; i < 5; i++ ){keyq[i] = ' ';}

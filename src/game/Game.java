@@ -9,7 +9,7 @@ import logger.Logcreator;
 
 public class Game {
 	public volatile static int state;
-	
+	public static int tpposx, tpposy;
 	public static char[] keyq;
 	static String ascii;
     static int f, locp;
@@ -32,14 +32,18 @@ public class Game {
 		Gfx.CLS();		
 		System.out.println(Game.ascii);
 		Sleep(2000);
-		game.Keyboard_handler.main();
+		game.Keyboard_handler.main(null);
+		tpposx = 160;
+		tpposy = 160;
+	    gfxproc.Maphandler.nmap = 1;
+		gfxproc.Maphandler.cmap = 0;
 		update = new Update();
 		state = 0;
 		up1 = new Thread(update, "t1");
 		up1.start();	
 		
 		
-		String[] argu = {"set", "80", "80"};
+		String[] argu = {"set", "81", "81"};
 		Gfx.main(argu);		
 	    state = 1;		
 	    
