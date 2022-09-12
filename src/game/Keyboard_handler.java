@@ -1,4 +1,4 @@
-package mainfile;
+package game;
 
 public class Keyboard_handler {
 

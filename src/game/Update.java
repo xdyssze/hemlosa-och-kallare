@@ -1,9 +1,10 @@
-package mainfile;
+package game;
 
 import java.io.IOException;
 import gfxproc.Gfx;
-import game.*;
+
 public class Update implements Runnable{
+	
 	public boolean running;
 	
 	
@@ -11,17 +12,17 @@ public class Update implements Runnable{
 
         switch(game.Game.state) {
             case (0): {
-            	Logcreator.Logbuilder("State changed to 0");
+            	Game.lg.Logbuilder("State changed to 0");
             	prgbar();
             	break;
             }
             case (1): {
-            	Logcreator.Logbuilder("State changed to 1");
+            	Game.lg.Logbuilder("State changed to 1");
             	up();
             	break;
             }
             case (2): {
-            	Logcreator.Logbuilder("State changed to 2");
+            	Game.lg.Logbuilder("State changed to 2");
             	while(game.Game.state == 2) {
             	try {
             		Sleep(100);
@@ -46,8 +47,8 @@ public class Update implements Runnable{
 			Sleep(2);
 			
 		}
-		Logcreator.Logbuilder("PROGRESSBAR STOPPED");
-		Logcreator.Logwriter();
+		Game.lg.Logbuilder("PROGRESSBAR STOPPED");
+		Game.lg.Logwriter();
 		run();
 	}
 	public void up() {		
@@ -70,12 +71,12 @@ public class Update implements Runnable{
 		    }
 		    System.out.print("\r\n");
 		}
-		Logcreator.Logwriter();
+		Game.lg.Logwriter();
 		// faster sleeeep 1500
 		Sleep(400);
 
 		}
-		Logcreator.Logbuilder("UPDATE PROCESS STOPPED");
+		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
 		run();
 	}
     

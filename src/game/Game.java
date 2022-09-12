@@ -1,34 +1,41 @@
 package game;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import gfxproc.Gfx;
-import mainfile.Funny;
-import mainfile.Update;
+import logger.Logcreator;
+
 
 public class Game {
 	public volatile static int state;
 	public static Tailpiece[] thand;
-	public char[] keyq;
-	String ascii;
-    int f, locp;
+	public static char[] keyq;
+	static String ascii;
+    static int f, locp;
     public static int points;
-    private Update update;
-    public Thread up1;
-    Scanner kay;
-	public Game() throws Exception {
+    private static Update update;
+    public static Thread up1;
+    static Scanner kay;
+    public static Logcreator lg;
+	public static void main(String[] args) throws Exception {		
 		
-		ascii = Funny.fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");
+		
+	    lg = new Logcreator();
+		
+		ascii = fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");
 		thand = new Tailpiece[60];
 		points = 0;
+		startup();
 	}
 	
-	public void startup() {		
+	public static void startup() {		
 		
 		Gfx.CLS();
 		kay = new Scanner(System.in);
 		keyq = new char[2];
-		System.out.println(this.ascii);
-		Funny.Sleep(2000);
+		System.out.println(Game.ascii);
+		Sleep(2000);
 		update = new Update();
 		state = 0;
 		up1 = new Thread(update, "t1");
@@ -41,7 +48,7 @@ public class Game {
 	    
 		}
 	
-	public class Tailpiece {
+	public static class Tailpiece {
 		int locx, locy, idp, prevx, prevy;
 		String facing;
 		boolean lc, lc1;
@@ -75,7 +82,7 @@ public class Game {
 				    	 this.locx = 0;
 				    	 
 				    	 lc = true;
-				    	 Logcreator.Logbuilder(" ** BOTTOM Reached x**  ");
+				    	 lg.Logbuilder(" ** BOTTOM Reached x**  ");
 				    	 break;
 				     }
 				}
@@ -90,7 +97,7 @@ public class Game {
 				    	 this.prevy = this.locy;
 				    	 this.locy = 0;
 				    	 lc = true;
-				    	 Logcreator.Logbuilder(" ** BOTTOM Reached y**  ");
+				    	 lg.Logbuilder(" ** BOTTOM Reached y**  ");
 				    	 break;
 				     }
 				 
@@ -144,8 +151,8 @@ public class Game {
 				}
 			}
 			String[] ar = {"chng", String.valueOf(this.prevx), String.valueOf(this.prevy), " "};
-			Logcreator.Logbuilder(ar[1] + " " + ar[2]);
-			Logcreator.Logbuilder(this.prevx + " " + this.prevy + " " + this.idp);
+			lg.Logbuilder(ar[1] + " " + ar[2]);
+			lg.Logbuilder(this.prevx + " " + this.prevy + " " + this.idp);
 			Gfx.Seghand(ar);
 			ar[1] = String.valueOf(this.locx);
 			ar[2] = String.valueOf(this.locy);
@@ -154,5 +161,21 @@ public class Game {
 			}
 				
 		}
+	public static String fileread(String fn)throws Exception {	    				
+		
+		String data = "";
+		data = new String(Files.readAllBytes(Paths.get(fn)));
+		return data;
+		
+	    
+	}
+	private static void Sleep(int to) {
+		try {
+									
+			Thread.sleep(to);
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
 }
 
