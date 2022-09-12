@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import gfxproc.Gfx;
+import logger.Logcreator;
 
 
 public class Game {
@@ -16,8 +17,12 @@ public class Game {
     private static Update update;
     public static Thread up1;
     static Scanner kay;
-	public static void main(String[] args) throws Exception {
-		Logcreator.main();
+    public static Logcreator lg;
+	public static void main(String[] args) throws Exception {		
+		
+		
+	    lg = new Logcreator();
+		
 		ascii = fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");
 		thand = new Tailpiece[60];
 		points = 0;
@@ -77,7 +82,7 @@ public class Game {
 				    	 this.locx = 0;
 				    	 
 				    	 lc = true;
-				    	 Logcreator.Logbuilder(" ** BOTTOM Reached x**  ");
+				    	 lg.Logbuilder(" ** BOTTOM Reached x**  ");
 				    	 break;
 				     }
 				}
@@ -92,7 +97,7 @@ public class Game {
 				    	 this.prevy = this.locy;
 				    	 this.locy = 0;
 				    	 lc = true;
-				    	 Logcreator.Logbuilder(" ** BOTTOM Reached y**  ");
+				    	 lg.Logbuilder(" ** BOTTOM Reached y**  ");
 				    	 break;
 				     }
 				 
@@ -146,8 +151,8 @@ public class Game {
 				}
 			}
 			String[] ar = {"chng", String.valueOf(this.prevx), String.valueOf(this.prevy), " "};
-			Logcreator.Logbuilder(ar[1] + " " + ar[2]);
-			Logcreator.Logbuilder(this.prevx + " " + this.prevy + " " + this.idp);
+			lg.Logbuilder(ar[1] + " " + ar[2]);
+			lg.Logbuilder(this.prevx + " " + this.prevy + " " + this.idp);
 			Gfx.Seghand(ar);
 			ar[1] = String.valueOf(this.locx);
 			ar[2] = String.valueOf(this.locy);

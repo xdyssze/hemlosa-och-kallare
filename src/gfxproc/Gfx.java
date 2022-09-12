@@ -1,7 +1,6 @@
 package gfxproc;
 
 import java.io.IOException;
-import game.Logcreator;
 public class Gfx {
 	public static int sizex, sizey;
 	public static Segment[] pix;
@@ -42,7 +41,7 @@ public class Gfx {
 		    	break;
 		    }
 		    case ("chng"): {
-		    	Logcreator.Logbuilder("chng " + Integer.parseInt(args[1]) + " " + Integer.parseInt(args[2]));
+		    	game.Game.lg.Logbuilder("chng " + Integer.parseInt(args[1]) + " " + Integer.parseInt(args[2]));
 		    	int id = sizex*(Integer.parseInt(args[2]))+Integer.parseInt(args[1]);
 		    	pix[id].symbol = args[3].charAt(0);
 		    	
