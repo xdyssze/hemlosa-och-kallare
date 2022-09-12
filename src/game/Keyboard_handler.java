@@ -8,12 +8,10 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 public class Keyboard_handler implements NativeKeyListener {
 	static char[] keyq;
 	static byte ciq;
-    public static void main(String[] args) {
+    public static void main() {
     	ciq = 0;
     	keyq = new char[5];
-    	for(int i = 0; i < 5; i++ ) {
-    		keyq[i] = ' ';
-    	}
+    	for(int i = 0; i < 5; i++ ){keyq[i] = ' ';}
     	try {
     		// registrerar hake in i hela skärmen, läser av hela skärmens keyinputs.
 			GlobalScreen.registerNativeHook();
@@ -21,17 +19,14 @@ public class Keyboard_handler implements NativeKeyListener {
 		catch (NativeHookException ex) {
 			Game.lg.Logbuilder("There was a problem registering the native hook.");
 			Game.lg.Logbuilder(ex.getMessage());
-
 			System.exit(1);
 		}
         // assignar denna klass som avlyssnare och vid en keypress så kommer den söka upp specifikt denna klass
-		GlobalScreen.addNativeKeyListener(new Keyboard_handler());
-        
+		GlobalScreen.addNativeKeyListener(new Keyboard_handler());        
     }
     // Key nertryckt
 	public void nativeKeyPressed(NativeKeyEvent e) {		
-		char[] temp = new char[5];
-		
+		char[] temp = new char[5];		
 		if(ciq == 0) {
 			keyq[0] = e.getKeyChar();
 		} else {
@@ -47,12 +42,10 @@ public class Keyboard_handler implements NativeKeyListener {
 			    } else {		        
 			    	temp[i+1] = ' ';
 			    }
-		    }
-		
+		    }		
 		}
 		keyq = temp;
-		ciq++;
-		
+		ciq++;		
 	}
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		char[] temp = new char[5];
@@ -67,11 +60,6 @@ public class Keyboard_handler implements NativeKeyListener {
 		    }
 		} else {
 			temp[4] = ' ';
-		}
-		
-		
-		
-	}
-	
-
+		}						
+	}	
 }

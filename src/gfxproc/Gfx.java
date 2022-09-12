@@ -12,8 +12,8 @@ public class Gfx {
 		        sizey = Integer.parseInt(args[2]);
 		        pix = new Segment[sizex*sizey];
 		        
-		        String[] ar = {"cr"};
-		        Seghand(ar);
+		        
+		        Seghand("cr", 0, 0, ' ');
                 break;
 		    }
 		    default: {
@@ -26,8 +26,8 @@ public class Gfx {
 		}
 	}
 	
-	public static void Seghand(String[] args) {
-		switch (args[0]) {
+	public static void Seghand(String ar1, int ar2, int ar3, char ar4) {
+		switch (ar1) {
 		    case ("cr"): {
 		    	for(int i = 0; i < sizex*sizey; i++) {
 		    		try {
@@ -41,20 +41,22 @@ public class Gfx {
 		    	break;
 		    }
 		    case ("chng"): {
-		    	game.Game.lg.Logbuilder("chng " + Integer.parseInt(args[1]) + " " + Integer.parseInt(args[2]));
-		    	int id = sizex*(Integer.parseInt(args[2]))+Integer.parseInt(args[1]);
-		    	pix[id].symbol = args[3].charAt(0);
+		    	game.Game.lg.Logbuilder("  ** CHNG SEGHAND: X: " + ar2 + " Y: " + ar3 + " **  ");
+		    	int id = sizex*(ar3)+ar2;
+		    	pix[id].symbol = ar4;
 		    	
 		    	break;
 		    }
 		    case ("clr"): {
-		    	int id = sizex*(Integer.parseInt(args[2]))+Integer.parseInt(args[1]);
+		    	int id = sizex*(ar3)+ar2;
 		    	pix[id].symbol = ' ';
 		    	break;
 		    }
-		
-		}
-	    
+		    default: {
+		    	game.Game.lg.Logbuilder(" **  AT SEGHAND:  INVALID SEGHAND AR1 PASSED TO SWITCH  **  ");
+				break;
+			}   	
+		}		
 	}
 	public static void CLS(){
 

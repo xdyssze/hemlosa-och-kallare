@@ -2,7 +2,7 @@ package game;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
+
 import gfxproc.Gfx;
 import logger.Logcreator;
 
@@ -28,13 +28,11 @@ public class Game {
 		startup();
 	}
 	
-	public static void startup() {		
-		
-		Gfx.CLS();
-		
-		
+	public static void startup() {				
+		Gfx.CLS();		
 		System.out.println(Game.ascii);
 		Sleep(2000);
+		game.Keyboard_handler.main();
 		update = new Update();
 		state = 0;
 		up1 = new Thread(update, "t1");
