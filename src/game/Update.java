@@ -52,12 +52,7 @@ public class Update implements Runnable{
 		run();
 	}
 	public void up() {		
-		while(game.Game.state == 1) {
-			
-        for(int i = 0; i <= Game.points; i++) {
-			// System.out.print(" nn " + i + " ss ");
-			Game.thand[i].update();
-		}
+		while(game.Game.state == 1) {			        
         
 	    CLS();
 		
