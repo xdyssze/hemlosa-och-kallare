@@ -29,10 +29,10 @@ public class Logcreator {
     		}
     	
     }
-    public void Logbuilder(String ev) {
+    public static void Logbuilder(String ev) {
     	log += ev + " ";
     }
-    public boolean Logwriter() {
+    public static boolean Logwriter() {
     	
     	try {
     	  Files.writeString(fname, LocalDateTime.now() + ":    " + log + "\r\n", StandardOpenOption.APPEND);

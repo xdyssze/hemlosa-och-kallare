@@ -6,19 +6,28 @@ public class Maphandler {
 	public static byte nmap, cmap;
 	int xm, ym;
 	Map[] mp;
-    public void main(String[] args) {  
-       
+    public Maphandler(byte ns, byte cs) {  
+       nmap = ns;
+       cmap = cs;
  
        mp = new Map[nmap];
        Game.lg.Logbuilder("  ** Map begin init **  ");
-       for(byte i = 0; i < nmap; i++) {
-    	   mp[i] = new Map(i);
+       for(byte i = 1; i <= nmap; i++) {
+    	   try {
+    	       mp[i] = new Map(i);
+    	   } catch(Exception e) {
+    		   e.printStackTrace();
+    	   }
        }
        
     }
     
     
-    public void maprender() {
+
+	public void maprender() {
+		
+		logger.Logcreator.Logbuilder(Thread.currentThread().getName());
+		
     	ym = (int)(Game.tpposy-((Gfx.sizey/2)-0.5));
         xm = (int)(Game.tpposx-((Gfx.sizex/2)-0.5));
     	for(int y = 0; y < Gfx.sizey; y++) {

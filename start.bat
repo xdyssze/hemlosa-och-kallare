@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-8 -classpath "C:\Users\roe.appelqvist\Documents\GitHub\hemlosa-och-kallare\bin;C:\Users\roe.appelqvist\Downloads\jnativehook-2.2.2.jar" -XX:+ShowCodeDetailsInExceptionMessages game.Game
