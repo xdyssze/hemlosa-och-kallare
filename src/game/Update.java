@@ -55,23 +55,16 @@ public class Update implements Runnable{
 	}
 	public void up() {		
 		
-		while(game.Game.state == 1) {		
-			game.Keyboard_handler.Kupdate();
-		if(game.Game.tpposx != prevposx || game.Game.tpposy != prevposy) {
+		while(game.Game.state == 1) {	
 			
+	    game.Keyboard_handler.Kupdate();
+				
 		game.Game.maph.maprender();
-	    CLS();
-	   
-		for(int i = 0; i < Gfx.sizey; i++) {
-		    for(int z = 0; z < Gfx.sizex; z++) {
-		    	int id = Gfx.sizex*(i)+z;
-		    	System.out.print(Gfx.pix[id].symbol);
-		    	
-		    }
-		    System.out.print("\r\n");
-		}
+		String r  = Gfx.rends();
+	    CLS();	   
+		System.out.print(r);
 		
-		}
+		
 		prevposx = game.Game.tpposx;
 		prevposy = game.Game.tpposy;
 		Game.lg.Logwriter();

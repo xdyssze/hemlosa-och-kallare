@@ -25,6 +25,17 @@ public class Gfx {
 		
 		}
 	}
+	public static String rends() {
+		String s = "";
+		for(int i = 0; i < sizey; i++) {
+		    for(int z = 0; z < sizex; z++) {
+		    	int id = sizex*(i)+z;
+		    	s += String.valueOf(Gfx.pix[id].symbol);    	
+		    }
+		    s += "\r\n";
+		}
+		return(s);
+	}
 	
 	public static void Seghand(String ar1, int ar2, int ar3, char ar4) {
 		switch (ar1) {
@@ -75,9 +86,6 @@ public class Gfx {
 			this.symbol = ' ';
 		}				
 		}
-	public class Graph {
-		
-	}
 }
 
 

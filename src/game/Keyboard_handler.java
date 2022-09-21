@@ -31,19 +31,19 @@ public class Keyboard_handler implements NativeKeyListener {
     
     public static void Kupdate() {
     	switch(keyq[0]) {
-    	case('w'): {
+    	case('W'): {
     		Game.tpposy -= 1;
     		break;
     	}
-    	case('a'): {
+    	case('A'): {
     		Game.tpposx -= 1;
     		break;
     	}
-    	case('s'): {
+    	case('S'): {
     		Game.tpposy += 1;
     		break;
     	}
-    	case('d'): {
+    	case('D'): {
     		Game.tpposx += 1;
     		break;
     	}
@@ -82,17 +82,17 @@ public class Keyboard_handler implements NativeKeyListener {
 	}
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		char[] temp = new char[5];
-		byte p = 0;
+		int p = 0;
 		try {
-		while(keyq[p] != NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0) && p < 5) {
-			logger.Logcreator.Logbuilder(String.valueOf(keyq[p]));
-			logger.Logcreator.Logwriter();
+			
+		while(p < 5 && keyq[p] != NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0)) {
+			
 			temp[p] = keyq[p];
 			p++;
 		}
 		if(p != 4) {
-		    for(byte i = p; i <= 3; i++) {
-		    	System.out.println(i);
+		    for(int i = p; i <= 3; i++) {
+		    	
 			    temp[i] = keyq[i+1];
 		    }
 		} else {
