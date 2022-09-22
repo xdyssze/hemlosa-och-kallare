@@ -2,31 +2,31 @@
     <sprite>
         <id>1</id>
 		<type>player</type>
-		<img></img>
-		<sx></sx>
-		<sy></sy>
-		<px></px>
-		<py></py>
-		<name></name>
+		<img>testp</img>
+		<sx>2</sx>
+		<sy>2</sy>
+		<px>2</px>
+		<py>2</py>
+		<name>testp</name>
     </sprite>
 	<sprite>
         <id>1</id>
 		<type>object</type>
-		<img></img>
-		<sx></sx>
-		<sy></sy>
-		<px></px>
-		<py></py>
-		<name></name>
+		<img>testo</img>
+		<sx>2</sx>
+		<sy>2</sy>
+		<px>2</px>
+		<py>2</py>
+		<name>testo</name>
     </sprite>
 	<sprite>
         <id>1</id>
 		<type>character</type>
-		<img></img>
-		<sx></sx>
-		<sy></sy>
-		<px></px>
-		<py></py>
-		<name></name>
+		<img>testc</img>
+		<sx>2</sx>
+		<sy>2</sy>
+		<px>2</px>
+		<py>2</py>
+		<name>testc</name>
     </sprite>
 </sprites>
