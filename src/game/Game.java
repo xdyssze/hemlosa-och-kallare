@@ -42,7 +42,7 @@ public class Game {
 		// variables init
 		tpposx = 10;
 		tpposy = 160;	
-		String[] argu = {"set", "81", "81"};
+		String[] argu = {"set", "40", "40"};
 		// Classes start / init
 		maph = new Maphandler((byte)9, (byte)5);		
 		game.Keyboard_handler.main(null);

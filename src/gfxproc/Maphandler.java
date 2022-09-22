@@ -28,12 +28,12 @@ public class Maphandler {
 		
 		logger.Logcreator.Logbuilder(Thread.currentThread().getName());
 		
-    	ym = (int)(Game.tpposy-((Gfx.sizey/2)-0.5));
-        xm = (int)(Game.tpposx-((Gfx.sizex/2)-0.5));
+    	ym = (int)(Game.tpposy-16);
+        xm = (int)(Game.tpposx-16);
     	for(int y = 0; y < Gfx.sizey; y++) {
     		for(int x = 0; x < Gfx.sizex; x++) {
     		    if(ym+y < 0 || ym+x < 0) {
-    		    	Gfx.Seghand("chng", x, y, ' ');
+    		    	Gfx.Seghand("chng", x, y, '*');
     		    } else {
     			Gfx.Seghand("chng", x, y, mp[cmap].m.charAt(mp[cmap].ms*(ym+y)+ym+x));
     		    }

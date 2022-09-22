@@ -151,6 +151,35 @@ public class Gfx {
 		public static Sprite idF(int id) {
 			return(sprites[id]);
 		}
+		public static Sprite SpriteF(String[] arg) {
+			if(arg.length == 2) {
+				return(idtF(Integer.valueOf(arg[0]), arg[1]));
+			} else {
+				for(int i = 0; i < arg[0].toCharArray().length; i++) {
+					if(Character.isDigit(arg[0].toCharArray()[i])) {
+						return(idF(Integer.valueOf(arg[0])));
+					}
+				}
+				return(nF(arg[0]));
+			}		    			
+			
+		}
+		public static String SpriteS(String[] arg) {
+			return(SpriteF(arg).s);
+		}
+		public static int[] SpriteSize(String[] arg) {
+			Sprite f = SpriteF(arg);    
+			int[] r = {f.sx, f.sy};
+			return(r);		    
+		}
+		public static int[] SpritePos(String[] arg) {
+			Sprite f = SpriteF(arg);
+			int[] r = {f.px, f.py};
+			return(r);
+		}
+		public static String SpriteName(String[] arg) {
+			return(SpriteF(arg).name);
+		}
 	}
 	
 	public static class Sprite {
