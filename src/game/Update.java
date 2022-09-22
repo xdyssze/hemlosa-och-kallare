@@ -60,6 +60,7 @@ public class Update implements Runnable{
 	    game.Keyboard_handler.Kupdate();
 				
 		game.Game.maph.maprender();
+		
 		String r  = Gfx.rends();
 	    CLS();	   
 		System.out.print(r);
@@ -82,8 +83,8 @@ public class Update implements Runnable{
 	    
 	    try {
 	        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-	    } catch (IOException | InterruptedException ex) {}
-
+	    } catch (IOException | InterruptedException e) {e.printStackTrace();}
+            
 	    }
 	private static void Sleep(int to) {
 		try {

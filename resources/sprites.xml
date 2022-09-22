@@ -1,0 +1,32 @@
+<sprites>
+    <sprite>
+        <id>1</id>
+		<type>player</type>
+		<img></img>
+		<sx></sx>
+		<sy></sy>
+		<px></px>
+		<py></py>
+		<name></name>
+    </sprite>
+	<sprite>
+        <id>1</id>
+		<type>object</type>
+		<img></img>
+		<sx></sx>
+		<sy></sy>
+		<px></px>
+		<py></py>
+		<name></name>
+    </sprite>
+	<sprite>
+        <id>1</id>
+		<type>character</type>
+		<img></img>
+		<sx></sx>
+		<sy></sy>
+		<px></px>
+		<py></py>
+		<name></name>
+    </sprite>
+</sprites>
