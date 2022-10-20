@@ -2,12 +2,98 @@
     <sprite>
         <id>1</id>
 		<type>player</type>
-		<img>testp</img>
-		<sx>2</sx>
-		<sy>2</sy>
-		<px>2</px>
-		<py>2</py>
-		<name>testp</name>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f1|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>front1</name>
+    </sprite>
+	<sprite>
+        <id>2</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f2|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>front2</name>
+    </sprite>
+	<sprite>
+        <id>3</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f3|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>front3</name>
+    </sprite>
+	<sprite>
+        <id>4</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  ||||    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>back1</name>
+    </sprite>
+	<sprite>
+        <id>5</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@|}{|####    |||_    _||_&quot;  &quot;_|    </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>back2</name>
+    </sprite>
+	<sprite>
+        <id>6</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-  {|@##@|   ####|}  _|||   &quot;_||_      |_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>back3</name>
+    </sprite>
+	<sprite>
+        <id>7</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l1|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>left1</name>
+    </sprite>
+	<sprite>
+        <id>8</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l2|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>left2</name>
+    </sprite>
+	<sprite>
+        <id>9</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l3|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>left3</name>
+    </sprite>
+	<sprite>
+        <id>10</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r1|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>right1</name>
+    </sprite>
+	<sprite>
+        <id>11</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r2|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>right2</name>
+    </sprite>
+	<sprite>
+        <id>12</id>
+		<type>player</type>
+		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r3|    _||_   &quot;_||_&quot; </img>
+		<sx>8</sx>
+		<sy>8</sy>
+		<name>right3</name>
     </sprite>
 	<sprite>
         <id>1</id>

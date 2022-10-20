@@ -2,16 +2,26 @@ package gfxproc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import game.Game;
+import game.Player;
 public class Gfx {
 	public static int sizex, sizey;
 	public static Segment[] pix;
 	public static int[] chars, objs, plays;
+	public static NodeList funsy;
+	public static Node fuqw;
 	static Document doc;
 	public static Sprite[] sprites;
 	public static void main(String[] args) {
@@ -29,22 +39,45 @@ public class Gfx {
 		    	break;
 		    }		
 	    }		
-		}		
+		}	
+		
 	}
 	// RENDERING
-	public static String rends() {
-		String s = "";
-		for(int i = 0; i < sizey; i++) {
-		    for(int z = 0; z < sizex; z++) {
-		    	int id = sizex*(i)+z;
-		    	s += String.valueOf(Gfx.pix[id].symbol);    	
-		    }
-		    s += "\r\n";
-		}
-		return(s);
-	}	
 	
+
 	// SEGMENTS
+	public static String Segproc() {
+		//map, obj, char, player den ordningen. Gå igenom alla funktioner som kräver plats på skärmen, fråga om något ska vara på den platsen och om det finns göra ett ranksystem av vad som är topp
+		String s;
+		s = "";
+		for(int y = 0; y < sizey; y++) {
+			for(int x = 0; x < sizex; x++) {
+				char mp, sp, cpix, p;
+				mp = game.Game.maph.maprender(x, y);
+				
+				s += String.valueOf(mp);
+				Seghand("chng", x, y, mp);
+			}
+			s += "\r\n";
+		}
+		StringBuilder ss = new StringBuilder(s);
+		logger.Logcreator.Logbuilder("\r\n S STRING:  " + s + "    \r\n   S LENGTH:"  + s.length());
+		// Spelare
+		for(int y = 0; y < 8; y++) {
+			for(int x = 0; x < 8; x++) {
+				char CSC;
+				try {
+					// För varje y läggs 2 karaktärer till för r/n
+					CSC = Game.player.pls.cSprite().charAt((8*y)+x);
+					ss.setCharAt(((82*(16+y))+(36+x)), CSC);
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				}	
+			}
+		}
+		return(ss.toString());
+	}
 	public static void Seghand(String ar1, int ar2, int ar3, char ar4) {
 		switch (ar1) {
 		    case ("cr"): {
@@ -87,7 +120,7 @@ public class Gfx {
 	
 	public static class SpriteHandler {
 		public static void main() {
-			  plays = new int[12];		        
+			        
 			     
 					try {
 						File xml = new File(System.getProperty("user.dir") + "\\resources\\sprites.xml");	
@@ -98,31 +131,41 @@ public class Gfx {
 						} catch(Exception e) {
 							e.printStackTrace();			
 						}
+					Element s = (Element) doc.getElementsByTagName("sprites").item(0);				
+				    NodeList d = s.getElementsByTagName("sprite");
+				    plays = new int[d.getLength()];		
 					System.out.print(doc.getElementsByTagName("sprite").getLength());
 					sprites = new Sprite[doc.getElementsByTagName("sprite").getLength()];
 					objs = new int[doc.getElementsByTagName("sprite").getLength()];
 					chars = new int[doc.getElementsByTagName("sprite").getLength()];
 					
 					for(int i = 0; i < doc.getElementsByTagName("sprite").getLength(); i++) {
-						Node s = doc.getElementsByTagName("sprite").item(i);
-					    NodeList d = s.getChildNodes();
-					    switch(d.item(1).getTextContent()) {
+						Node sp1 = d.item(i);
+						if (sp1.getNodeType() == Node.ELEMENT_NODE)
+						 {
+							Element spr = (Element) sp1;
+					    System.out.println(spr.getElementsByTagName("type").item(0).getTextContent());
+						String type = spr.getElementsByTagName("type").item(0).getTextContent();
+					    switch(type) {
 					    case("player"): {
-					    	addToEnd(plays, i, null, null);
-					    	sprites[i] = new Sprite(i, d);
+					    	addToEnd(plays, ((i+1)/2), null, null);
+					    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
 					    	break;
 					    }
 	                    case("object"): {
-	                    	addToEnd(objs, i, null, null);
-	                    	sprites[i] = new Sprite(i, d);
+	                    	addToEnd(objs, ((i+1)/2), null, null);
+	                    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
 					    	break;
 					    }
 	                    case("character"): {
-	                    	addToEnd(chars, i, null, null);
-	                    	sprites[i] = new Sprite(i, d);
+	                    	addToEnd(chars, ((i+1)/2), null, null);
+	                    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
 					    	break;
-					    }			    
+					    }	
+					    
 					    }
+						}
+						
 					}				
 					
 		}
@@ -165,7 +208,8 @@ public class Gfx {
 			
 		}
 		public static String SpriteS(String[] arg) {
-			return(SpriteF(arg).s);
+			Sprite sss = SpriteF(arg);
+			return(sss.s);
 		}
 		public static int[] SpriteSize(String[] arg) {
 			Sprite f = SpriteF(arg);    
@@ -186,18 +230,23 @@ public class Gfx {
 		int id, sid, sx, sy, px, py;
 		String s, type, name;
 		
-		public Sprite(int is, NodeList d) {
+		public Sprite(int is, Element d) {
+			
 			this.id = is;
-			this.sid = Integer.valueOf(d.item(0).getTextContent());
-			this.type = d.item(1).getTextContent();
-			this.s = d.item(2).getTextContent();
-			this.sx = Integer.valueOf(d.item(3).getTextContent());
-			this.sy = Integer.valueOf(d.item(4).getTextContent());
-			if(this.type != "player") {
-				this.px = Integer.valueOf(d.item(5).getTextContent());
-				this.py = Integer.valueOf(d.item(6).getTextContent());
+			this.sid = Integer.valueOf(d.getElementsByTagName("id").item(0).getTextContent());
+			this.type = (String) d.getElementsByTagName("type").item(0).getTextContent();
+			logger.Logcreator.Logbuilder("\r\n"+this.type+" TYPE; \r\n");
+			logger.Logcreator.Logwriter();
+			this.s = d.getElementsByTagName("img").item(0).getTextContent();
+			this.sx = Integer.valueOf(d.getElementsByTagName("sx").item(0).getTextContent());
+			this.sy = Integer.valueOf(d.getElementsByTagName("sy").item(0).getTextContent());
+			try {
+				this.px = Integer.valueOf(d.getElementsByTagName("px").item(0).getTextContent());
+				this.py = Integer.valueOf(d.getElementsByTagName("py").item(0).getTextContent());			
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-			this.name = d.item(7).getTextContent();
+				this.name = d.getElementsByTagName("name").item(0).getTextContent();			
 		}		
 
 	}

@@ -12,11 +12,12 @@ public class Game {
 	public volatile static int state;
 	public static int tpposx, tpposy;
 	public static char[] keyq;
+	public static Player player;
 	static String ascii;
     static int f, locp;
     private static Update update;
-    public static Thread up1;
-    static Maphandler maph;
+    public static Thread up1, maint;
+    public static Maphandler maph;
     public static Logcreator lg;
 	public static void main(String[] args) throws Exception {		
 		
@@ -35,23 +36,32 @@ public class Game {
 		System.out.println(Game.ascii);
 		Sleep(2000);
 		// Thread Start, progressbar
+		
 		state = 0;					
 		update = new Update();
-		up1 = new Thread(update, "t1");
+		up1 = new Thread(update, "Update Thread");
 		up1.start();
+		
 		// variables init
-		tpposx = 10;
-		tpposy = 160;	
-		String[] argu = {"set", "40", "40"};
+		tpposx = 20;
+		tpposy = 190;	
+		String[] argu = {"set", "80", "40"};
 		// Classes start / init
 		maph = new Maphandler((byte)9, (byte)5);		
 		game.Keyboard_handler.main(null);
-		Gfx.main(argu);		
+		Gfx.main(argu);	
+		player = new Player();
 		// Start
 	    state = 1;			    
 		}
+	// Game functions
+	public static void MapPathReader(String f) {
+        
+        
+	}
 	
 	
+	/// RANDOM STUFF
 	public static String fileread(String fn)throws Exception {	    				
 		
 		String data = "";

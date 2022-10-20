@@ -56,12 +56,8 @@ public class Update implements Runnable{
 	public void up() {		
 		
 		while(game.Game.state == 1) {	
-			
-	    game.Keyboard_handler.Kupdate();
-				
-		game.Game.maph.maprender();
-		
-		String r  = Gfx.rends();
+		game.Keyboard_handler.Kupdate();	
+		String r  = Gfx.Segproc();
 	    CLS();	   
 		System.out.print(r);
 		
