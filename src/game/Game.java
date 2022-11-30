@@ -4,18 +4,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import gfxproc.Gfx;
+import gfxproc.Maphandler;
 import logger.Logcreator;
 
 
 public class Game {
 	public volatile static int state;
-	
+	public static int tpposx, tpposy;
 	public static char[] keyq;
 	static String ascii;
     static int f, locp;
     private static Update update;
     public static Thread up1;
-    
+    static Maphandler maph;
     public static Logcreator lg;
 	public static void main(String[] args) throws Exception {		
 		
@@ -28,21 +29,26 @@ public class Game {
 		startup();
 	}
 	
-	public static void startup() {				
-		Gfx.CLS();		
+	public static void startup() {		
+		// Ascii art show
+		Gfx.CLS();	
 		System.out.println(Game.ascii);
 		Sleep(2000);
-		game.Keyboard_handler.main();
+		// Thread Start, progressbar
+		state = 0;					
 		update = new Update();
-		state = 0;
 		up1 = new Thread(update, "t1");
-		up1.start();	
-		
-		
-		String[] argu = {"set", "80", "80"};
+		up1.start();
+		// variables init
+		tpposx = 10;
+		tpposy = 160;	
+		String[] argu = {"set", "81", "81"};
+		// Classes start / init
+		maph = new Maphandler((byte)9, (byte)5);		
+		game.Keyboard_handler.main(null);
 		Gfx.main(argu);		
-	    state = 1;		
-	    
+		// Start
+	    state = 1;			    
 		}
 	
 	

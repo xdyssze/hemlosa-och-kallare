@@ -75,6 +75,9 @@ public class Gfx {
 			this.symbol = ' ';
 		}				
 		}
+	public class Graph {
+		
+	}
 }
 
 

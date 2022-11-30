@@ -8,10 +8,10 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 public class Keyboard_handler implements NativeKeyListener {
 	static char[] keyq;
 	static byte ciq;
-    public static void main() {
+    public static void main(String[] args) {
     	ciq = 0;
     	keyq = new char[5];
-    	for(int i = 0; i < 5; i++ ){keyq[i] = ' ';}
+    	for(int i = 0; i < 5; i++ ){keyq[i] = '*';}
     	try {
     		// registrerar hake in i hela skärmen, läser av hela skärmens keyinputs.
 			GlobalScreen.registerNativeHook();
@@ -24,23 +24,56 @@ public class Keyboard_handler implements NativeKeyListener {
         // assignar denna klass som avlyssnare och vid en keypress så kommer den söka upp specifikt denna klass
 		GlobalScreen.addNativeKeyListener(new Keyboard_handler());        
     }
+    
+    
+    
+    // keyhandler faktiskt
+    
+    public static void Kupdate() {
+    	switch(keyq[0]) {
+    	case('w'): {
+    		Game.tpposy -= 1;
+    		break;
+    	}
+    	case('a'): {
+    		Game.tpposx -= 1;
+    		break;
+    	}
+    	case('s'): {
+    		Game.tpposy += 1;
+    		break;
+    	}
+    	case('d'): {
+    		Game.tpposx += 1;
+    		break;
+    	}
+    	case(' '): {
+    		break;
+    	}
+    	default: {
+    		
+    		break;
+    	}
+    	
+    	}
+    }
     // Key nertryckt
 	public void nativeKeyPressed(NativeKeyEvent e) {		
 		char[] temp = new char[5];		
 		if(ciq == 0) {
-			keyq[0] = e.getKeyChar();
+			keyq[0] = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
 		} else {
 			if (ciq == 5) {
-				keyq[4] = ' ';
+				keyq[4] = '*';
 				ciq--;
 			}
-			temp[0] = e.getKeyChar();
+			temp[0] = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
 			
 		    for(int i = 0; i < 4; i++) {
-			    if(keyq[i] != ' ') {
+			    if(keyq[i] != '*') {
 			    	temp[i+1] = keyq[i];
 			    } else {		        
-			    	temp[i+1] = ' ';
+			    	temp[i+1] = '*';
 			    }
 		    }		
 		}
@@ -50,16 +83,23 @@ public class Keyboard_handler implements NativeKeyListener {
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		char[] temp = new char[5];
 		byte p = 0;
-		while(keyq[p] != e.getKeyChar()) {
+		try {
+		while(keyq[p] != NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0) && p < 5) {
+			logger.Logcreator.Logbuilder(String.valueOf(keyq[p]));
+			logger.Logcreator.Logwriter();
 			temp[p] = keyq[p];
 			p++;
 		}
 		if(p != 4) {
-		    for(byte i = p; p < 3; i++) {
+		    for(byte i = p; i <= 3; i++) {
+		    	System.out.println(i);
 			    temp[i] = keyq[i+1];
 		    }
 		} else {
-			temp[4] = ' ';
-		}						
+			temp[4] = '*';
+		}		
+		} catch(Exception es) {
+			es.printStackTrace();
+		}
 	}	
 }

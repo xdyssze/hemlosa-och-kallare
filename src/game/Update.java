@@ -6,6 +6,7 @@ import gfxproc.Gfx;
 public class Update implements Runnable{
 	
 	public boolean running;
+	public int prevposx, prevposy;
 	
 	
 	public void run() {
@@ -35,10 +36,11 @@ public class Update implements Runnable{
         }
 	}
 	public void prgbar() {
+		
 		var i = 0;
 		while(game.Game.state == 0) {
 			i++;
-			if(i == 40) {
+			if(i == 81) {
 				System.out.print("\r\n");
 				i = 0;
 				
@@ -52,27 +54,34 @@ public class Update implements Runnable{
 		run();
 	}
 	public void up() {		
-		while(game.Game.state == 1) {			        
-        
-	    CLS();
 		
+		while(game.Game.state == 1) {		
+			game.Keyboard_handler.Kupdate();
+		if(game.Game.tpposx != prevposx || game.Game.tpposy != prevposy) {
+			
+		game.Game.maph.maprender();
+	    CLS();
+	   
 		for(int i = 0; i < Gfx.sizey; i++) {
 		    for(int z = 0; z < Gfx.sizex; z++) {
 		    	int id = Gfx.sizex*(i)+z;
 		    	System.out.print(Gfx.pix[id].symbol);
-		    	if((Gfx.pix[id].symbol) == '*') {
-		    			System.out.println("             // " + z + " //                // " + i + " //   ");
-		    	}
+		    	
 		    }
 		    System.out.print("\r\n");
 		}
+		
+		}
+		prevposx = game.Game.tpposx;
+		prevposy = game.Game.tpposy;
 		Game.lg.Logwriter();
 		// faster sleeeep 1500
-		Sleep(400);
-
+		Sleep(200);
 		}
+		
 		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
 		run();
+		
 	}
     
 	public static void CLS() {
