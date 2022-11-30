@@ -77,6 +77,12 @@ public class Keyboard_handler implements NativeKeyListener {
     		}
     		break;
     	}
+    	case('I'): {
+    		game.Game.cMenu = new game.Menu();
+    		game.Game.cMenu.drawMenu();
+            clearQue();
+    		break;
+    	}
     	case(' '): {
     		break;
     	}
@@ -87,6 +93,71 @@ public class Keyboard_handler implements NativeKeyListener {
     	
     	}
     }
+    
+    
+    public static void Kmenu() {
+    	switch(keyq[0]) {
+    	case('W'): {
+    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
+    		if(f == "do") {
+    			Game.tpposy -= 1;
+            } else if(f == "no") {
+    			
+    		} else {
+    		//	Game.MapPathReader(f);
+    		}
+    		
+    		break;
+    	}
+    	case('A'): {
+    		String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
+    		if(f == "do") {
+    			Game.tpposx -= 1;
+            } else if(f == "no") {
+    			
+    		} else {
+    		//	Game.MapPathReader(f);
+    		}	
+    		break;
+    	}
+    	case('S'): {
+    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
+    		if(f == "do") {
+    			Game.tpposy += 1;
+    		} else if(f == "no") {
+    			
+    		} else {
+    		//	Game.MapPathReader(f);
+    		}
+    		break;
+    	}
+    	case('D'): {
+    		String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
+    		if(f == "do") {
+    			Game.tpposx += 1;
+    		} else if(f == "no") {
+    			
+    		} else {
+    		//	Game.MapPathReader(f);
+    		}
+    		break;
+    	}
+    	case('I'): {
+    		game.Game.state = 1;
+    		clearQue();
+    		break;
+    	}
+    	case(' '): {
+    		break;
+    	}
+    	default: {
+    		
+    		break;
+    	}
+    	
+    	}
+    }
+    
     // Key nertryckt
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		boolean alreadypressed = false;
@@ -143,4 +214,9 @@ public class Keyboard_handler implements NativeKeyListener {
 		logger.Logcreator.Logbuilder("\r\n FUNNY STRING 2:    " + String.valueOf(keyq[0]) + String.valueOf(keyq[1]) + String.valueOf(keyq[2]) + String.valueOf(keyq[3]) + String.valueOf(keyq[4]));
 		ciq--;
 	}	
+	
+	
+	public static void clearQue() {
+		keyq = new char[5];
+	}
 }

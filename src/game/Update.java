@@ -9,11 +9,23 @@ public class Update implements Runnable{
 	public int prevposx, prevposy;
 	
 	
+	
+	
+	
+	// 
+	// Att göra, Binda framerate till 24fps, detta genom att räkna hur lång tid varje frame tar, och justera en sleep utifrån det.
+	// 30 fps är 1/30 sekund per frame, om framen tar mindre tid än detta för att kalkulera och göra allt, ställ då in så att den sover i lämplig tid.
+	// därav lägg till timer. System.nanoTime();
+	
+	
+	
+	//
 	public void run() {
 
         switch(game.Game.state) {
             case (0): {
             	Game.lg.Logbuilder("State changed to 0");
+            	
             	prgbar();
             	break;
             }
@@ -33,12 +45,18 @@ public class Update implements Runnable{
             	}
             	break;
             }
+            case (3): {
+            	Game.lg.Logbuilder("State changed to 3");
+            	menu();
+            	break;
+            }
         }
 	}
 	public void prgbar() {
 		
 		var i = 0;
 		while(game.Game.state == 0) {
+			
 			i++;
 			if(i == 81) {
 				System.out.print("\r\n");
@@ -46,7 +64,8 @@ public class Update implements Runnable{
 				
 			}
 			System.out.print("#");
-			Sleep(2);
+			
+			Sleep(20);
 			
 		}
 		Game.lg.Logbuilder("PROGRESSBAR STOPPED");
@@ -57,6 +76,7 @@ public class Update implements Runnable{
 		
 		while(game.Game.state == 1) {	
 		game.Keyboard_handler.Kupdate();	
+		if(game.Game.state != 3) {
 		String r  = Gfx.Segproc();
 	    CLS();	   
 		System.out.print(r);
@@ -65,15 +85,34 @@ public class Update implements Runnable{
 		prevposx = game.Game.tpposx;
 		prevposy = game.Game.tpposy;
 		Game.lg.Logwriter();
-		// faster sleeeep 1500
-		Sleep(200);
-		}
 		
+		}
+		}
 		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
 		run();
 		
 	}
+    public void menu() {
+    	//String r = Gfx.segToString();
+    	while(game.Game.state == 3) {	
+    		game.Keyboard_handler.Kmenu();
+    		//game.Game.cMenu.drawMenu();
+    		//String r = Gfx.segToString();
+    		//CLS();
+    		//System.out.print(r);	
+    		Sleep(100);
+    		Game.lg.Logwriter();
+    		
+    	}
+    	run();
+    }
     
+    
+    
+    
+    // timing functions
+    
+   
 	public static void CLS() {
     	
 	    

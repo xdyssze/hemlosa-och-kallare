@@ -47,6 +47,19 @@ public class Gfx {
 	
 
 	// SEGMENTS
+	
+	
+	public static String segToString() {
+		String s;
+		s = "";
+		for(int y = 0; y < sizey; y++) {
+			for(int x = 0; x < sizex; x++) {
+				s += pix[(y*sizex)+x].symbol;
+			}
+			s += "\r\n";
+		}
+		return(s);
+	}
 	public static String Segproc() {
 		//map, obj, char, player den ordningen. Gå igenom alla funktioner som kräver plats på skärmen, fråga om något ska vara på den platsen och om det finns göra ett ranksystem av vad som är topp
 		String s;
@@ -79,6 +92,7 @@ public class Gfx {
 		}
 		return(ss.toString());
 	}
+	
 	public static void Seghand(String ar1, int ar2, int ar3, char ar4) {
 		switch (ar1) {
 		    case ("cr"): {
@@ -245,8 +259,65 @@ public class Gfx {
  
 	}
 	
+	// ARtS AND CRAFTS
 	
 	
+	
+	public static void drawBox(int x, int y, int xx, int yy, String style, boolean trans) {
+		byte xd;
+		char lc;
+		switch(style) {
+		    case("dotted"): {
+			    xd = 2;
+			    lc = '*';
+			    break;
+		    }
+		    case("solid"): {
+		    	xd = 1;	 
+			    lc = '*';
+			    break;
+		    }
+		    default: {
+		    	xd = 1;    
+		    	lc = '*';
+		    	break;
+		    }
+		}	
+		try {
+		// ritar lådan;
+		for(int z = y; z <= yy; z+=xd) {
+			if(z >= sizey) {
+				
+			} else {
+			
+			for(int t = x; t <= xx; t+=xd) {
+				if(t >= sizex) {
+					
+				} else {
+				Seghand("chng", t, z, lc);
+				}
+			}
+			}
+		}
+		
+		if(trans) {
+			for(int z = y+1; z <= yy-1; z++) {
+				for(int t = x+1; t <= xx-1; t++) {
+					Seghand("chng", t, z, ' ');
+				}
+			}
+		} 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void text(int x, int y, String t) {
+		char[] a = t.toCharArray();
+		for(int i = 0; i < t.length(); i++) {
+			Seghand("chng", (x+i), y, a[i]);
+		}
+	}
 	
 	// RANDOM ACCESSORY FUNCTIONS
 	public static void addToEnd(int[] a, int v, String[] as, String vs) {

@@ -21,6 +21,7 @@ public class Player {
     	if(init) {
     	// värden av init
     		// Arrays så jag kan bestämma mer än siffror, egentligen bör jag ha 
+    		name = "Jonas";
     		bhp = 20;
     		bdmg = 4;
     		bsp = 1;
