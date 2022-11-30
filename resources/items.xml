@@ -4,20 +4,25 @@
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
+		<extr></extr>
 	</wearable>
 	<wearable class="weapon" id="1">
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
+		<extr></extr>
 	</wearable>
 	<wearable class="amulet" id="1">
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>
@@ -27,6 +32,7 @@
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>
@@ -36,6 +42,7 @@
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>
@@ -45,6 +52,7 @@
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>
@@ -54,15 +62,17 @@
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>
 	</consumable>
 	
-	<quest id="1">
+	<quest class="quest" id="1">
 	    <name></name>
 		<desc></desc>
 		<img></img>
+		<proc></proc>
 		<effecttype></effecttype>
 		<effect></effect>
 		<extr></extr>

@@ -28,12 +28,12 @@ public class Player {
     		dmg = bdmg;
     		sp = bsp;
     		iH = new Itemhandler();
-    		inventory[99] = new Item(null);
+    		inventory = new Item[99];
     		// plats 0 = dräkt,1 = amulet, 2 = vapen
-    		equipped[3] = new Item(null);
+    		equipped = new Item[3];
     	} else {
     		iH = new Itemhandler();
-    		inventory[99] = new Item(null);
+    		inventory = new Item[99];
     	}
     	
     	

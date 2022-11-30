@@ -101,19 +101,22 @@ public class Itemhandler {
     
     // KLASSER
 	public static class Item{
-		String clas, img, effecttype, effect, name, desc, itemtype;
+		String clas, img, effecttype, effect, name, desc, itemtype, extr;
+		
 		boolean proc, neg;
     	int id, size;  
     	// införskaffar noden sätter olika parametrar av föremålet
 	    public Item(Node w) {
-	    	if(w.equals(null)) {
+	    	if(w == null) {
+	    		System.out.println("yay gay");
 	    		this.itemtype = "gay";
 	    	} else {
 	    	this.itemtype = w.getNodeName();
 	    	NamedNodeMap s = w.getAttributes();
-    	    this.clas = s.getNamedItem("class").getNodeValue(); 
+    	    this.clas = s.getNamedItem("class").getTextContent(); 
     	    this.id = Integer.parseInt(s.getNamedItem("id").getNodeValue());
     	    this.size = 8;
+    	    
     	    try {
     	    this.img = xHand.getNodeText("img", w);
     	    this.proc = xHand.getNodeText("proc", w).equals("1");
@@ -122,6 +125,7 @@ public class Itemhandler {
     	    this.desc = xHand.getNodeText("desc", w);
     	    this.effecttype = xHand.getNodeText("effecttype", w);
     	    this.effect = xHand.getNodeText("effect", w);	 
+    	    this.extr = xHand.getNodeText("extr", w);
     	    } catch(Exception e) {
     	    	e.printStackTrace();
     	    }
@@ -150,6 +154,7 @@ public class Itemhandler {
 	    		}
 	    		break;
 	    	}
+	    	
 	    	}
 	    }
 	    public void onDequip() {

@@ -18,7 +18,7 @@ public class Maphandler {
        Game.lg.Logbuilder("  ** Map begin init **  ");
        for(byte i = 1; i <= nmap; i++) {
     	   try {
-    	       mp[i] = new Map(i);
+    	       mp[i-1] = new Map(i);
     	   } catch(Exception e) {
     		   e.printStackTrace();
     	   }
@@ -32,6 +32,7 @@ public class Maphandler {
     	public Map(byte id) {
 
     		try {		
+    			Game.lg.Logbuilder("  Map id =   " + id);
     			Node mN = xHand.NR("map" + id, 0);
     			m = xHand.getNodeText("mapstring", mN);
     			mp = xHand.getNodeText("mappathmap", mN);
@@ -52,7 +53,7 @@ public class Maphandler {
         	// går igenom alla världen på högra sidan av karaktären, om den innehåller någon av de sakerna som specifieras innan så körs specifika funtkoiner.
     		for(int i = 0; i < 8; i++) {
     			// kollar från kartstringen vad som finns på den positionen.
-    			f += String.valueOf(mp[cmap].mp.charAt(320*(y+i)+(x+7)));
+    			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+i)+(x+7)));
     			
     		}
     		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
@@ -72,7 +73,7 @@ public class Maphandler {
     		
       	    } else if (x == (Game.tpposx-1)){
       	    	for(int i = 0; i < 8; i++) {
-        			f += String.valueOf(mp[cmap].mp.charAt(320*(y+i)+x));
+        			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+i)+x));
         		}
       	    	logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
                 if(f.contains("1")) {
@@ -92,7 +93,7 @@ public class Maphandler {
     		
     	} else if (y == (Game.tpposy+1)) {
     		for(int i = 0; i < 8; i++) {
-    			f += String.valueOf(mp[cmap].mp.charAt(320*(y+7)+x+i));
+    			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+7)+x+i));
     		}
     		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
             if(f.contains("1")) {
@@ -112,7 +113,7 @@ public class Maphandler {
     		
     	} else if (y == (Game.tpposy-1)) {
     		for(int i = 0; i < 8; i++) {
-    			f += String.valueOf(mp[cmap].mp.charAt(320*(y)+x+i));
+    			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y)+x+i));
     		}
     		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
             if(f.contains("1")) {
@@ -139,7 +140,7 @@ public class Maphandler {
 		 if(ym+y < 0 || xm+x < 0 || xm+x > 319 || ym+y > 319) { 
 			 return('*');
 		 } else {
-			 return(mp[cmap].m.charAt(mp[cmap].ms*(ym+y)+(xm+x))); 
+			 return(mp[cmap-1].m.charAt(mp[cmap-1].ms*(ym+y)+(xm+x))); 
 		 }
     }
     
