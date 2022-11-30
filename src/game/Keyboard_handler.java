@@ -39,7 +39,7 @@ public class Keyboard_handler implements NativeKeyListener {
             } else if(f == "no") {
     			
     		} else {
-    			Game.MapPathReader(f);
+    		//	Game.MapPathReader(f);
     		}
     		
     		break;
@@ -51,7 +51,7 @@ public class Keyboard_handler implements NativeKeyListener {
             } else if(f == "no") {
     			
     		} else {
-    			Game.MapPathReader(f);
+    		//	Game.MapPathReader(f);
     		}	
     		break;
     	}
@@ -62,7 +62,7 @@ public class Keyboard_handler implements NativeKeyListener {
     		} else if(f == "no") {
     			
     		} else {
-    			Game.MapPathReader(f);
+    		//	Game.MapPathReader(f);
     		}
     		break;
     	}
@@ -73,7 +73,7 @@ public class Keyboard_handler implements NativeKeyListener {
     		} else if(f == "no") {
     			
     		} else {
-    			Game.MapPathReader(f);
+    		//	Game.MapPathReader(f);
     		}
     		break;
     	}

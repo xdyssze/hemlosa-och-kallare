@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <wearable class="suit" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+	</wearable>
+	<wearable class="weapon" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+	</wearable>
+	<wearable class="amulet" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</wearable>
+	
+	<consumable class="mana" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="health" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="strength" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="easter" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</consumable>
+	
+	<quest id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<effecttype></effecttype>
+		<effect></effect>
+		<extr></extr>
+	</quest>
+</items>

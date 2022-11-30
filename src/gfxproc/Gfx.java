@@ -24,6 +24,7 @@ public class Gfx {
 	public static Node fuqw;
 	static Document doc;
 	public static Sprite[] sprites;
+	public static xmlHandler.XmlHandler xHand;
 	public static void main(String[] args) {
 		if (args.length >= 1) {
 		switch(args[0]) {
@@ -121,26 +122,17 @@ public class Gfx {
 	public static class SpriteHandler {
 		public static void main() {
 			        
-			     
-					try {
-						File xml = new File(System.getProperty("user.dir") + "\\resources\\sprites.xml");	
-						DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-						DocumentBuilder builder = factory.newDocumentBuilder();
-						doc = builder.parse(xml);
-						
-						} catch(Exception e) {
-							e.printStackTrace();			
-						}
-					Element s = (Element) doc.getElementsByTagName("sprites").item(0);				
-				    NodeList d = s.getElementsByTagName("sprite");
-				    plays = new int[d.getLength()];		
-					System.out.print(doc.getElementsByTagName("sprite").getLength());
-					sprites = new Sprite[doc.getElementsByTagName("sprite").getLength()];
-					objs = new int[doc.getElementsByTagName("sprite").getLength()];
-					chars = new int[doc.getElementsByTagName("sprite").getLength()];
+			        xHand = new xmlHandler.XmlHandler("sprites", false);
+			       
+								
+				    NodeList d = xHand.main.getChildNodes();
+				    plays = new int[xHand.NodeLength()];		
+					sprites = new Sprite[xHand.NodeLength()];
+					objs = new int[xHand.NodeLength()];
+					chars = new int[xHand.NodeLength()];
 					
-					for(int i = 0; i < doc.getElementsByTagName("sprite").getLength(); i++) {
-						Node sp1 = d.item(i);
+					for(int i = 0; i < (xHand.NodeLength()/2); i++) {
+						Node sp1 = xHand.NR("sprite", i);
 						if (sp1.getNodeType() == Node.ELEMENT_NODE)
 						 {
 							Element spr = (Element) sp1;
@@ -233,6 +225,7 @@ public class Gfx {
 		public Sprite(int is, Element d) {
 			
 			this.id = is;
+			try {
 			this.sid = Integer.valueOf(d.getElementsByTagName("id").item(0).getTextContent());
 			this.type = (String) d.getElementsByTagName("type").item(0).getTextContent();
 			logger.Logcreator.Logbuilder("\r\n"+this.type+" TYPE; \r\n");
@@ -240,15 +233,16 @@ public class Gfx {
 			this.s = d.getElementsByTagName("img").item(0).getTextContent();
 			this.sx = Integer.valueOf(d.getElementsByTagName("sx").item(0).getTextContent());
 			this.sy = Integer.valueOf(d.getElementsByTagName("sy").item(0).getTextContent());
-			try {
+			if(!this.type.equals("player")) {
 				this.px = Integer.valueOf(d.getElementsByTagName("px").item(0).getTextContent());
 				this.py = Integer.valueOf(d.getElementsByTagName("py").item(0).getTextContent());			
+			} 
+				this.name = d.getElementsByTagName("name").item(0).getTextContent();	
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-				this.name = d.getElementsByTagName("name").item(0).getTextContent();			
 		}		
-
+ 
 	}
 	
 	

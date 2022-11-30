@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <sprites>
     <sprite>
         <id>1</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f1|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |f1|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>front1</name>
@@ -10,7 +11,7 @@
 	<sprite>
         <id>2</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f2|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |f2|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>front2</name>
@@ -18,7 +19,7 @@
 	<sprite>
         <id>3</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |f3|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |f3|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>front3</name>
@@ -26,7 +27,7 @@
 	<sprite>
         <id>4</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  ||||    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  ||||    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>back1</name>
@@ -34,7 +35,7 @@
 	<sprite>
         <id>5</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@|}{|####    |||_    _||_&quot;  &quot;_|    </img>
+		<img>   ##     #''#    -##-   |@##@|}{|####    |||_    _||_"  "_|    </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>back2</name>
@@ -42,7 +43,7 @@
 	<sprite>
         <id>6</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-  {|@##@|   ####|}  _|||   &quot;_||_      |_&quot; </img>
+		<img>   ##     #''#    -##-  {|@##@|   ####|}  _|||   "_||_      |_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>back3</name>
@@ -50,7 +51,7 @@
 	<sprite>
         <id>7</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l1|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |l1|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>left1</name>
@@ -58,7 +59,7 @@
 	<sprite>
         <id>8</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l2|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |l2|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>left2</name>
@@ -66,7 +67,7 @@
 	<sprite>
         <id>9</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |l3|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |l3|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>left3</name>
@@ -74,7 +75,7 @@
 	<sprite>
         <id>10</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r1|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |r1|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>right1</name>
@@ -82,7 +83,7 @@
 	<sprite>
         <id>11</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r2|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |r2|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>right2</name>
@@ -90,7 +91,7 @@
 	<sprite>
         <id>12</id>
 		<type>player</type>
-		<img>   ##     #&apos;&apos;#    -##-   |@##@| {|####|}  |r3|    _||_   &quot;_||_&quot; </img>
+		<img>   ##     #''#    -##-   |@##@| {|####|}  |r3|    _||_   "_||_" </img>
 		<sx>8</sx>
 		<sy>8</sy>
 		<name>right3</name>

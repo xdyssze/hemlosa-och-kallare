@@ -1,11 +1,13 @@
 package game;
 
 import java.nio.file.Files;
+
 import java.nio.file.Paths;
 
 import gfxproc.Gfx;
 import gfxproc.Maphandler;
 import logger.Logcreator;
+import game.Player;
 
 
 public class Game {
@@ -19,14 +21,9 @@ public class Game {
     public static Thread up1, maint;
     public static Maphandler maph;
     public static Logcreator lg;
-	public static void main(String[] args) throws Exception {		
-		
-		
-	    lg = new Logcreator();
-		
-		ascii = fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");
-		
-		
+	public static void main(String[] args) throws Exception {			
+	    lg = new Logcreator();		
+		ascii = fileread(System.getProperty("user.dir") + "\\src\\steffe.txt");			
 		startup();
 	}
 	
@@ -50,18 +47,20 @@ public class Game {
 		maph = new Maphandler((byte)9, (byte)5);		
 		game.Keyboard_handler.main(null);
 		Gfx.main(argu);	
-		player = new Player();
+		// kan ändras till false i framtiden om jag vill lägga till sparfiler
+		player = new Player(true);
 		// Start
 	    state = 1;			    
 		}
 	// Game functions
-	public static void MapPathReader(String f) {
-        
-        
-	}
+	
 	
 	
 	/// RANDOM STUFF
+
+	
+	
+	//
 	public static String fileread(String fn)throws Exception {	    				
 		
 		String data = "";
@@ -70,6 +69,7 @@ public class Game {
 		
 	    
 	}
+	
 	private static void Sleep(int to) {
 		try {
 									
