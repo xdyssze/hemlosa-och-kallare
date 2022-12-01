@@ -3,6 +3,7 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
+import gfxproc.Gfx;
 // Använder mig här av jnativehook, typ det enda bibloteket jag hittade för cmd som kan lyssna på keyevents. 
 // annars skulle jag behövt skriva eget eller mer trogligen implementera något bootleg system för att gå i text.
 public class Keyboard_handler implements NativeKeyListener {
@@ -44,8 +45,11 @@ public class Keyboard_handler implements NativeKeyListener {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
     	    		if(f == "do") {
     	    			Game.tpposy -= 1;
-    	    		}
+    	    			tim.setTimer();
+    	    			
+    	    		} else {
     				tim.setTimer();
+    	    		}
     			}
     		} else {
     			tim = new game.Timer();
@@ -62,8 +66,11 @@ public class Keyboard_handler implements NativeKeyListener {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
     	    		if(f == "do") {
     	    			Game.tpposx -= 1;
-    	    		}
+    	    			tim.setTimer();
+    	    			
+    	    		} else {
     				tim.setTimer();
+    	    		}
     			}
     		} else {
     			tim = new game.Timer();
@@ -80,8 +87,11 @@ public class Keyboard_handler implements NativeKeyListener {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
     	    		if(f == "do") {
     	    			Game.tpposy += 1;
-    	    		}
+    	    			tim.setTimer();
+    	    			
+    	    		} else {
     				tim.setTimer();
+    	    		}
     			}
     		} else {
     			tim = new game.Timer();
@@ -98,8 +108,11 @@ public class Keyboard_handler implements NativeKeyListener {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
     	    		if(f == "do") {
     	    			Game.tpposx += 1;
-    	    		}
+    	    			tim.setTimer();
+    	    			
+    	    		} else {
     				tim.setTimer();
+    	    		}
     			}
     		} else {
     			tim = new game.Timer();

@@ -60,6 +60,14 @@ public class Gfx {
 		}
 		return(s);
 	}
+	
+	
+	
+	public static void updateScreen() {
+		String r = Segproc();
+		game.Update.CLS();
+		System.out.print(r);
+	}
 	public static String Segproc() {
 		//map, obj, char, player den ordningen. Gå igenom alla funktioner som kräver plats på skärmen, fråga om något ska vara på den platsen och om det finns göra ett ranksystem av vad som är topp
 		String s;

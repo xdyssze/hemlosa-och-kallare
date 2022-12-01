@@ -7,7 +7,7 @@ public class Update implements Runnable{
 	
 	public boolean running;
 	public int prevposx, prevposy;
-	
+	public String prevs;
 	
 	
 	
@@ -31,6 +31,8 @@ public class Update implements Runnable{
             }
             case (1): {
             	Game.lg.Logbuilder("State changed to 1");
+            	CLS();
+            	System.out.print(Gfx.Segproc());
             	up();
             	break;
             }
@@ -73,20 +75,26 @@ public class Update implements Runnable{
 		run();
 	}
 	public void up() {		
-		
+		long t1, t2;
 		while(game.Game.state == 1) {	
+	    t1 = System.nanoTime();
 		game.Keyboard_handler.Kupdate();	
 		if(game.Game.state == 1) {
-		String r  = Gfx.Segproc();
-	    CLS();	   
-		System.out.print(r);
-		
-		
+		Gfx.updateScreen();
+		}
 		prevposx = game.Game.tpposx;
 		prevposy = game.Game.tpposy;
 		Game.lg.Logwriter();
-		
+		t2 = System.nanoTime();
+		if(((t2-t1)/1000000) < (1/30)) {
+		    try {
+				Thread.sleep(((1/20)-((t2-t1)/1000000))*1000);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
 		}
+		
 		}
 		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
 		run();
