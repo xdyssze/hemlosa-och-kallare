@@ -9,9 +9,12 @@ public class Keyboard_handler implements NativeKeyListener {
 	static char[] keyq;
 	static byte ciq;
 	static boolean cK;
+    static game.Timer tim;
     public static void main(String[] args) {
     	ciq = 0;
     	keyq = new char[5];
+    	tim = new game.Timer();
+    	tim.running = false;
     	for(int i = 0; i < 5; i++ ){keyq[i] = '*';}
     	try {
     		// registrerar hake in i hela skärmen, läser av hela skärmens keyinputs.
@@ -32,49 +35,76 @@ public class Keyboard_handler implements NativeKeyListener {
     
     public static void Kupdate() {
     	switch(keyq[0]) {
-    	case('W'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
-    		if(f == "do") {
-    			Game.tpposy -= 1;
-            } else if(f == "no") {
-    			
+    	case('W'): {		
+    		if(tim.running) {
+    			if(tim.t1 == 0) {
+    				tim.t1 = tim.t0;
+    			}
+    			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
+    				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
+    	    		if(f == "do") {
+    	    			Game.tpposy -= 1;
+    	    		}
+    				tim.setTimer();
+    			}
     		} else {
-    		//	Game.MapPathReader(f);
-    		}
-    		
+    			tim = new game.Timer();
+    			tim.setTimer();
+    		}    		
     		break;
     	}
-    	case('A'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
-    		if(f == "do") {
-    			Game.tpposx -= 1;
-            } else if(f == "no") {
-    			
+    	case('A'): {  		
+    		if(tim.running) {
+    			if(tim.t1 == 0) {
+    				tim.t1 = tim.t0;
+    			}
+    			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
+    				String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
+    	    		if(f == "do") {
+    	    			Game.tpposx -= 1;
+    	    		}
+    				tim.setTimer();
+    			}
     		} else {
-    		//	Game.MapPathReader(f);
+    			tim = new game.Timer();
+    			tim.setTimer();
+    		}
+    		break;
+    	}
+    	case('S'): { 		
+    		if(tim.running) {
+    			if(tim.t1 == 0) {
+    				tim.t1 = tim.t0;
+    			}
+    			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
+    				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
+    	    		if(f == "do") {
+    	    			Game.tpposy += 1;
+    	    		}
+    				tim.setTimer();
+    			}
+    		} else {
+    			tim = new game.Timer();
+    			tim.setTimer();
     		}	
     		break;
     	}
-    	case('S'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
-    		if(f == "do") {
-    			Game.tpposy += 1;
-    		} else if(f == "no") {
-    			
-    		} else {
-    		//	Game.MapPathReader(f);
-    		}
-    		break;
-    	}
     	case('D'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
-    		if(f == "do") {
-    			Game.tpposx += 1;
-    		} else if(f == "no") {
-    			
+    		if(tim.running) {
+    			if(tim.t1 == 0) {
+    				tim.t1 = tim.t0;
+    			}
+    			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
+    				String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
+    	    		if(f == "do") {
+    	    			Game.tpposx += 1;
+    	    		}
+    				tim.setTimer();
+    			}
     		} else {
-    		//	Game.MapPathReader(f);
-    		}
+    			tim = new game.Timer();
+    			tim.setTimer();
+    		}	
     		break;
     	}
     	case('I'): {
@@ -201,6 +231,7 @@ public class Keyboard_handler implements NativeKeyListener {
 		}
 		if(p != 4) {
 			if(p == 0) {
+				tim.running = false;
 				cK = true;
 			}
 		    for(int i = p; i < 4; i++) {

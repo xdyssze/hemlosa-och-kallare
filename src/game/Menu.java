@@ -6,6 +6,7 @@ import  gfxproc.Gfx;
 public class Menu {
     byte height, width, sh, sw;
     String[] menuItems;
+    char[] keyEnabled;
     int currentlySelected;
 	public Menu() {
 		height = 5;

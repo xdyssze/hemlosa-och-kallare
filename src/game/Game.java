@@ -54,46 +54,7 @@ public class Game {
 	    state = 1;			    
 		}
 	// Game functions
-	 public class Timing {
-	    	long t0, t30, avrg, frameCount, rts;
-	    	
-
-	    	public Timing() {
-	    	    rts = System.currentTimeMillis()/1000;
-	    	}
-	    	public void setTimer() {
-	    		t0 = System.nanoTime();
-	    	}
-	    	public long intervall() {
-	    		return(System.nanoTime()-t0);
-	    	}
-	    	public long pauseInterval() {
-	    		long time;
-	    		time = intervall();
-	    		t30+=time;
-	    		frameCount++;
-	    		if(frameCount == 30) {
-	    			avrgCalc();
-	    		}
-	        	if(time < (1/30)) {
-	        		return((1/30)-time);
-	        	} else {
-	        		return(0);
-	        	}
-	        	
-	        }
-	    	public void avrgCalc() {
-	    		avrg = t30/frameCount;
-	    		frameCount = 0; 
-	    		t30 = 0;
-	    		logger.Logcreator.Logbuilder("Avrg TPF this second was: " + avrg);
-	    	}
-	    	
-	    	
-	    	public void validate() {
-	    		if(t30 == rts);
-	    	}
-	    }
+	
 	    
 	
 	

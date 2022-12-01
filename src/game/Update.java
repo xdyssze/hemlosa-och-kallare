@@ -76,7 +76,7 @@ public class Update implements Runnable{
 		
 		while(game.Game.state == 1) {	
 		game.Keyboard_handler.Kupdate();	
-		if(game.Game.state != 3) {
+		if(game.Game.state == 1) {
 		String r  = Gfx.Segproc();
 	    CLS();	   
 		System.out.print(r);
