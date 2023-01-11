@@ -1,0 +1,52 @@
+package menugui;
+
+import gfxproc.Gfx;
+
+public class CarachterGUI {
+	public byte height, width, sh, sw, ih, iw;
+	
+	
+	public CarachterGUI() {
+		ih = 3;
+		iw = 1;
+		 
+	}
+	
+    public void drawMenu(int cs) {
+    	
+    	
+    	//ritar lådor på hörn med items i
+        Gfx.drawBox(0, 0, 15, 7, "solid", true);
+        Gfx.drawBox(0, 8, 15, 15, "solid", true);
+        Gfx.drawBox(0, 16, 15, 23, "solid", true);
+        for(int i = 0; i < 3; i++) {
+        	if(game.Game.player.equipped[i] != null) {
+        	Gfx.text(1, 1+(i*8), game.Game.player.equipped[i].name);
+        	}
+        }
+        
+        //Charaktär
+        Gfx.drawBox(16, 0, 35, 23, "solid", true);
+        
+        // ritar text
+        Gfx.text(52, 1, "Quests");
+        
+        // Questboxes, varje låda är 24 px bred,
+        for(int i = 0; i < game.Game.player.aQ; i++) {
+        	Gfx.drawBox(39, 3+(i*8), 71, 9+(i*8), "solid", true);
+        }
+    	// uppdaterar skrämen
+    	String r = Gfx.segToString();
+		game.Update.CLS();
+		System.out.print(r);	
+		
+		
+		// ritar beskrivningsmenyn
+    }
+    
+    public void action(int cs) {
+    	
+    	
+    }
+    
+}

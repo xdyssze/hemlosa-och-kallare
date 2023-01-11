@@ -6,7 +6,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import logger.Logcreator;
+
+import game.Game;
+
 public class XmlHandler {
     Document doc;
     public Element main;
@@ -90,19 +92,22 @@ public class XmlHandler {
 	public String getNodeText(String name, Node n) {
 		for(int i = 0; i < ChildNodeLength(n); i++) {
 			Node sex = n.getChildNodes().item(i);
-			if(sex.getNodeName() == name) {
+			
+			if(sex.getNodeName().equals(name)) {
+				//Game.lg.Logbuilder("XmlHandler: Node with name " + sex.getNodeName() + " has text content " + sex.getTextContent());
+				//Game.lg.Logwriter();
 				return(sex.getTextContent());
 			}
 		}
-        ErrorWriter("No TextNode With that name found");
+        ErrorWriter("No TextNode With the name " + name + " was found");
         return(null);
 	}
 	
 	public void ErrorWriter(String e) {
 		StackTraceElement[] STE = Thread.currentThread().getStackTrace();
 		StackTraceElement f = STE[2] ;
-		Logcreator.Logbuilder("XmlHandler: Error in Function " + f.getMethodName() +  ", " + e );
-		Logcreator.Logwriter();
+		Game.lg.Logbuilder("XmlHandler: Error in Function " + f.getMethodName() +  ", " + e );
+		Game.lg.Logwriter();
 		
 	}
 }

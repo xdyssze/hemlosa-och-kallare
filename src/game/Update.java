@@ -103,7 +103,7 @@ public class Update implements Runnable{
     public void menu() {
     	//String r = Gfx.segToString();
     	while(game.Game.state == 3) {	
-    		game.Keyboard_handler.Kmenu();
+    		game.Keyboard_handler.kMenu();
     		//game.Game.cMenu.drawMenu();
     		//String r = Gfx.segToString();
     		//CLS();
@@ -129,6 +129,8 @@ public class Update implements Runnable{
 	    } catch (IOException | InterruptedException e) {e.printStackTrace();}
             
 	    }
+	    
+
 	private static void Sleep(int to) {
 		try {
 									

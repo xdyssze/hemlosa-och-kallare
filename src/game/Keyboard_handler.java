@@ -3,7 +3,7 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
-import gfxproc.Gfx;
+
 // Använder mig här av jnativehook, typ det enda bibloteket jag hittade för cmd som kan lyssna på keyevents. 
 // annars skulle jag behövt skriva eget eller mer trogligen implementera något bootleg system för att gå i text.
 public class Keyboard_handler implements NativeKeyListener {
@@ -12,18 +12,23 @@ public class Keyboard_handler implements NativeKeyListener {
 	static boolean cK;
     static game.Timer tim;
     public static void main(String[] args) {
+    	// initialiserar lite värden
     	ciq = 0;
     	keyq = new char[5];
+        // skapar ny timer ich sätter den till icke-igång.
     	tim = new game.Timer();
     	tim.running = false;
+    	// nullar hela keyq-en
     	for(int i = 0; i < 5; i++ ){keyq[i] = '*';}
     	try {
     		// registrerar hake in i hela skärmen, läser av hela skärmens keyinputs.
 			GlobalScreen.registerNativeHook();
 		}
 		catch (NativeHookException ex) {
+			// vid provlem så gör den följande
 			Game.lg.Logbuilder("There was a problem registering the native hook.");
 			Game.lg.Logbuilder(ex.getMessage());
+			Game.lg.Logwriter();
 			System.exit(1);
 		}
         // assignar denna klass som avlyssnare och vid en keypress så kommer den söka upp specifikt denna klass
@@ -33,9 +38,11 @@ public class Keyboard_handler implements NativeKeyListener {
     
     
     // keyhandler faktiskt
-    
+    // körs varje update, i princip kollar om en tangent är nertryckt och kör dess funktion.
     public static void Kupdate() {
+    	// kollar vilken tangent
     	switch(keyq[0]) {
+    	// alla tangenter funkar ungefär på samma sätt när det kommer till movement. Om en timer inte körs, skapas en ny, väntar tills nästa uppdatering, om nog tid paserat rör sig karaktären en pos, jadijada
     	case('W'): {		
     		if(tim.running) {
     			if(tim.t1 == 0) {
@@ -120,13 +127,15 @@ public class Keyboard_handler implements NativeKeyListener {
     		}	
     		break;
     	}
+    	// denna startar en meny som kan interageras och gås igenom.
     	case('I'): {
-    		game.Game.cMenu = new game.Menu();
-    		game.Game.cMenu.drawMenu();
+    		game.Game.menhand.setGUI("esc");
+    		game.Game.menhand.drawGUI();
             clearQue();
     		break;
     	}
     	case(' '): {
+    		
     		break;
     	}
     	default: {
@@ -137,52 +146,35 @@ public class Keyboard_handler implements NativeKeyListener {
     	}
     }
     
-    
-    public static void Kmenu() {
+    // samma som kUpdate fast för menyer, lite andra funktioner
+    public static void kMenu() {
     	switch(keyq[0]) {
     	case('W'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
-    		if(f == "do") {
-    			Game.tpposy -= 1;
-            } else if(f == "no") {
-    			
-    		} else {
-    		//	Game.MapPathReader(f);
-    		}
-    		
+    			int f = (game.Game.menhand.gui.currentlySelected)-(game.Game.menhand.gui.iw);
+    			game.Game.menhand.mvPos('w', f);
+    			game.Game.menhand.drawGUI();
+    			clearQue();
     		break;
     	}
     	case('A'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
-    		if(f == "do") {
-    			Game.tpposx -= 1;
-            } else if(f == "no") {
-    			
-    		} else {
-    		//	Game.MapPathReader(f);
-    		}	
+    		int f = (game.Game.menhand.gui.currentlySelected)-1;
+			game.Game.menhand.mvPos('a', f);
+			game.Game.menhand.drawGUI();
+			clearQue();
     		break;
     	}
     	case('S'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
-    		if(f == "do") {
-    			Game.tpposy += 1;
-    		} else if(f == "no") {
-    			
-    		} else {
-    		//	Game.MapPathReader(f);
-    		}
+    		int f = (game.Game.menhand.gui.currentlySelected)+(game.Game.menhand.gui.iw);
+            game.Game.menhand.mvPos('s', f);
+			game.Game.menhand.drawGUI();
+			clearQue();
     		break;
     	}
     	case('D'): {
-    		String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
-    		if(f == "do") {
-    			Game.tpposx += 1;
-    		} else if(f == "no") {
-    			
-    		} else {
-    		//	Game.MapPathReader(f);
-    		}
+    		int f = (game.Game.menhand.gui.currentlySelected)+1;
+			game.Game.menhand.mvPos('d', f);
+			game.Game.menhand.drawGUI();
+			clearQue();
     		break;
     	}
     	case('I'): {
@@ -191,6 +183,9 @@ public class Keyboard_handler implements NativeKeyListener {
     		break;
     	}
     	case(' '): {
+    		Game.lg.Logbuilder("mellanslag");
+    		game.Game.menhand.action();
+    		clearQue();
     		break;
     	}
     	default: {
@@ -204,22 +199,28 @@ public class Keyboard_handler implements NativeKeyListener {
     // Key nertryckt
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		boolean alreadypressed = false;
-		
+		Game.lg.Logbuilder("KEY: " +  NativeKeyEvent.getKeyText(e.getKeyCode()) + " Has been pressed");
+		char p;
+		p = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
+		if(e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
+			p = ' ';
+		}
 		for(int i = 0; i < 5; i++) {
-			if(keyq[i] ==  NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0)) {
+			if(keyq[i] ==  p ) {
 				alreadypressed = true;
 			}
+			
 		}
 		if(!alreadypressed) {
 		char[] temp = new char[5];		
 		if(ciq == 0) {
-			keyq[0] = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
+			keyq[0] = p;
 		} else {
 			if (ciq == 5) {
 				keyq[4] = '*';
 				ciq--;
 			}
-			temp[0] = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
+			temp[0] = p;
 			
 		    for(int i = 0; i < 4; i++) {
 			    if(keyq[i] != '*') {
@@ -236,8 +237,12 @@ public class Keyboard_handler implements NativeKeyListener {
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		char[] temp = new char[5];
 		int p = 0;
-		logger.Logcreator.Logbuilder("\r\n FUNNY STRING:    " + String.valueOf(keyq[0]) + String.valueOf(keyq[1]) + String.valueOf(keyq[2]) + String.valueOf(keyq[3]) + String.valueOf(keyq[4]));
-		while(p < 5 && keyq[p] != NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0)) {
+		char kr = NativeKeyEvent.getKeyText(e.getKeyCode()).charAt(0);
+		if(e.getKeyCode() == NativeKeyEvent.VC_SPACE) {
+			kr = ' ';
+		}
+		//logger.Logcreator.Logbuilder("\r\n FUNNY STRING:    " + String.valueOf(keyq[0]) + String.valueOf(keyq[1]) + String.valueOf(keyq[2]) + String.valueOf(keyq[3]) + String.valueOf(keyq[4]));
+		while(p < 5 && keyq[p] != kr) {
 			
 			temp[p] = keyq[p];
 			p++;
@@ -255,7 +260,7 @@ public class Keyboard_handler implements NativeKeyListener {
 			temp[4] = '*';
 		}				
 		keyq = temp;
-		logger.Logcreator.Logbuilder("\r\n FUNNY STRING 2:    " + String.valueOf(keyq[0]) + String.valueOf(keyq[1]) + String.valueOf(keyq[2]) + String.valueOf(keyq[3]) + String.valueOf(keyq[4]));
+		Game.lg.Logbuilder("\r\n FUNNY STRING 2:    " + String.valueOf(keyq[0]) + String.valueOf(keyq[1]) + String.valueOf(keyq[2]) + String.valueOf(keyq[3]) + String.valueOf(keyq[4]));
 		ciq--;
 	}	
 	

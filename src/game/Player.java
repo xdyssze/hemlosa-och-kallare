@@ -1,22 +1,24 @@
 package game;
 import gfxproc.Gfx;
-import game.Itemhandler;
+
 import game.Itemhandler.Item;
 // föräldrarklassen, i princip innehåller alla små funktioner och klasser / attribut en spelare kan ha. Tex en spelare kan ha stats (altså en ny klass stats), samt kan en spelare ha en sprite (klassen playersprite).
 public class Player {
 	int x, y;
     public PlayerSprite pls;
     public Itemhandler iH;
-	String name;
-	Item[] equipped;
+	public String name;
+	public int aQ;
+	public Item[] equipped;
 	double hp, dmg, sp, bhp, bdmg, bsp;
     StatEffect[] activeEffects;
-	Item[] inventory;
+	public Item[] inventory;
     public Player(boolean init) {
     	// STILLA NERÅT POs
     	
     	pls = new PlayerSprite();
     	pls.cs = 3;
+    	aQ = 2;
     	activeEffects = new StatEffect[20];
     	if(init) {
     	// värden av init
@@ -80,68 +82,72 @@ public class Player {
     	con3 = bsp;
     	
     	// SÅ ATT VI RÄKNAR PROC FÖRST
-    	for(int i = 0; i < activeEffects.length; i++) {
-    		if(activeEffects[i].proc) {
-        	    switch(activeEffects[i].efOn) {
+    	for(StatEffect obj : activeEffects) {
+    		if(obj != null) {
+    		    if(obj.proc) {
+        	    switch(obj.efOn) {
         	        case("dmg"): {
-            		    if(activeEffects[i].neg) {
-                	        con2 = ((bdmg/100)*(100-(Double.valueOf(activeEffects[i].value))));
+            		    if(obj.neg) {
+                	        con2 = ((bdmg/100)*(100-(Double.valueOf(obj.value))));
                 	    } else {
-                		     con2 = ((bdmg/100)*(100+(Double.valueOf(activeEffects[i].value))));
+                		     con2 = ((bdmg/100)*(100+(Double.valueOf(obj.value))));
                 	    }
         		        break;
         	        }
         	        case("hp"): {
-        	        	if(activeEffects[i].neg) {
-                	        con1 = ((bhp/100)*(100-(Double.valueOf(activeEffects[i].value))));
+        	        	if(obj.neg) {
+                	        con1 = ((bhp/100)*(100-(Double.valueOf(obj.value))));
                 	    } else {
-                		     con1 = ((bhp/100)*(100+(Double.valueOf(activeEffects[i].value))));
+                		     con1 = ((bhp/100)*(100+(Double.valueOf(obj.value))));
                 	    }
         		        break;
         	        }
         	        case("sp"): {
-        	        	if(activeEffects[i].neg) {
-                	        con3 = ((bsp/100)*(100-(Double.valueOf(activeEffects[i].value))));
+        	        	if(obj.neg) {
+                	        con3 = ((bsp/100)*(100-(Double.valueOf(obj.value))));
                 	    } else {
-                		    con3 = ((bsp/100)*(100+(Double.valueOf(activeEffects[i].value))));
+                		    con3 = ((bsp/100)*(100+(Double.valueOf(obj.value))));
                 	    }
         		        break;
         	        }
         	    }
     		}
+    		}
         }
     	
-    	for(int i = 0; i < activeEffects.length; i++) {
-    		if(!activeEffects[i].proc) {
-        	switch(activeEffects[i].efOn) {
+    	for(StatEffect obj : activeEffects) {
+    		if(obj != null) {
+    		if(!obj.proc) {
+        	switch(obj.efOn) {
         	case("dmg"): {
-        	    	if(activeEffects[i].neg) {
-        	    		con2 -= (Double.valueOf(activeEffects[i].value));
+        	    	if(obj.neg) {
+        	    		con2 -= (Double.valueOf(obj.value));
         	    	} else {
-        	    		con2 += (Double.valueOf(activeEffects[i].value));
+        	    		con2 += (Double.valueOf(obj.value));
         	    	}
         	    
         		break;
         	}
         	case("hp"): {
-    	    	if(activeEffects[i].neg) {
-    	    		con1 -= (Double.valueOf(activeEffects[i].value));
+    	    	if(obj.neg) {
+    	    		con1 -= (Double.valueOf(obj.value));
     	    	} else {
-    	    		con1 += (Double.valueOf(activeEffects[i].value));
+    	    		con1 += (Double.valueOf(obj.value));
     	    	}
         		break;
         	}
         	case("sp"): {
-    	    	if(activeEffects[i].neg) {
-    	    		con3 -= (Double.valueOf(activeEffects[i].value));
+    	    	if(obj.neg) {
+    	    		con3 -= (Double.valueOf(obj.value));
     	    	} else {
-    	    		con3 += (Double.valueOf(activeEffects[i].value));
+    	    		con3 += (Double.valueOf(obj.value));
     	    	}
         		break;
         	}
         	}
     		}
         }
+    	}
     	hp = con1;
     	dmg = con2;
     	sp = con3;

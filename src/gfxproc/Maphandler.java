@@ -56,7 +56,7 @@ public class Maphandler {
     			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+i)+(x+7)));
     			
     		}
-    		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
+    		
             if(f.contains("1")) {
             	return("no");
             } else {
@@ -75,7 +75,7 @@ public class Maphandler {
       	    	for(int i = 0; i < 8; i++) {
         			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+i)+x));
         		}
-      	    	logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
+      	    	
                 if(f.contains("1")) {
                 	return("no");
                 } else {
@@ -95,7 +95,7 @@ public class Maphandler {
     		for(int i = 0; i < 8; i++) {
     			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+7)+x+i));
     		}
-    		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
+    		
             if(f.contains("1")) {
             	return("no");
             } else {
@@ -115,7 +115,7 @@ public class Maphandler {
     		for(int i = 0; i < 8; i++) {
     			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y)+x+i));
     		}
-    		logger.Logcreator.Logbuilder(" \r\n     CHAR AT:    " + f + "    END OF:    ");
+    		
             if(f.contains("1")) {
             	return("no");
             } else {

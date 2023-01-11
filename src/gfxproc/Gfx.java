@@ -1,21 +1,12 @@
 package gfxproc;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.util.Objects;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
 import game.Game;
-import game.Player;
 public class Gfx {
 	public static int sizex, sizey;
 	public static Segment[] pix;
@@ -68,13 +59,18 @@ public class Gfx {
 		game.Update.CLS();
 		System.out.print(r);
 	}
+	public static void clearSec() {
+		for(int i = 0; i < sizex*sizey; i++) {
+			pix[i].symbol = ' ';
+		}
+			}
 	public static String Segproc() {
 		//map, obj, char, player den ordningen. Gå igenom alla funktioner som kräver plats på skärmen, fråga om något ska vara på den platsen och om det finns göra ett ranksystem av vad som är topp
 		String s;
 		s = "";
 		for(int y = 0; y < sizey; y++) {
 			for(int x = 0; x < sizex; x++) {
-				char mp, sp, cpix, p;
+				char mp;
 				mp = game.Game.maph.maprender(x, y);
 				
 				s += String.valueOf(mp);
@@ -83,7 +79,7 @@ public class Gfx {
 			s += "\r\n";
 		}
 		StringBuilder ss = new StringBuilder(s);
-		logger.Logcreator.Logbuilder("\r\n S STRING:  " + s + "    \r\n   S LENGTH:"  + s.length());
+		
 		// Spelare
 		for(int y = 0; y < 8; y++) {
 			for(int x = 0; x < 8; x++) {
@@ -147,7 +143,7 @@ public class Gfx {
 			        xHand = new xmlHandler.XmlHandler("sprites", false);
 			       
 								
-				    NodeList d = xHand.main.getChildNodes();
+				   // NodeList d = xHand.main.getChildNodes();
 				    plays = new int[xHand.NodeLength()];		
 					sprites = new Sprite[xHand.NodeLength()];
 					objs = new int[xHand.NodeLength()];
@@ -250,8 +246,8 @@ public class Gfx {
 			try {
 			this.sid = Integer.valueOf(d.getElementsByTagName("id").item(0).getTextContent());
 			this.type = (String) d.getElementsByTagName("type").item(0).getTextContent();
-			logger.Logcreator.Logbuilder("\r\n"+this.type+" TYPE; \r\n");
-			logger.Logcreator.Logwriter();
+			Game.lg.Logbuilder("\r\n"+this.type+" TYPE; \r\n");
+			Game.lg.Logwriter();
 			this.s = d.getElementsByTagName("img").item(0).getTextContent();
 			this.sx = Integer.valueOf(d.getElementsByTagName("sx").item(0).getTextContent());
 			this.sy = Integer.valueOf(d.getElementsByTagName("sy").item(0).getTextContent());
