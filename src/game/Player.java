@@ -10,7 +10,12 @@ public class Player {
 	public String name;
 	public int aQ;
 	public Item[] equipped;
-	double hp, dmg, sp, bhp, bdmg, bsp;
+	double hp;
+	public double dmg;
+	double sp;
+	double bhp;
+	double bdmg;
+	double bsp;
     StatEffect[] activeEffects;
 	public Item[] inventory;
     public Player(boolean init) {
@@ -159,10 +164,19 @@ public class Player {
     	reOrgStat();
     	calculateStat();
     }
-    
+    public StatEffect findEffect(String s) {
+    	for(StatEffect obj : activeEffects) {
+    	    if(obj != null){
+    	    	if(obj.name.equals(s)) {
+    	    		return(obj);
+    	    	}
+    	    }
+    	}
+    	return(null);
+    }
     public void removeEffect(StatEffect s)  {
     	for(byte i = 0; i < activeEffects.length; i++) {
-    		if(activeEffects[i].equals(s)) {
+    		if(activeEffects[i] != null && activeEffects[i].equals(s)) {
     			activeEffects[i] = null;
     		}
     	}

@@ -126,14 +126,18 @@ public class Itemhandler {
     	
     	switch(s.clas) {
     	case("suit"): {
+    		game.Game.player.equipped[0].onDequip();
     		game.Game.player.equipped[0] = null;
+    		
     		break;
     	}
     	case("amulet"): {
+    		game.Game.player.equipped[1].onDequip();
     		game.Game.player.equipped[1] = null;
     		break;
     	}
     	case("weapon"): {
+    		game.Game.player.equipped[2].onDequip();
     		game.Game.player.equipped[2] = null;
     		break;
     	}
@@ -214,6 +218,7 @@ public class Itemhandler {
 	    }
 	    // inte tillagd ännu men ska ta bort effekter osv.
 	    public void onDequip() {
+	    	game.Game.player.removeEffect(Game.player.findEffect(this.name));
 	    	
 	    }
 	    

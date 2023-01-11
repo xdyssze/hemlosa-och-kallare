@@ -1,5 +1,6 @@
 package menugui;
 
+import game.Player;
 import gfxproc.Gfx;
 
 public class CarachterGUI {
@@ -27,6 +28,9 @@ public class CarachterGUI {
         
         //Charaktär
         Gfx.drawBox(16, 0, 35, 23, "solid", true);
+        
+        //Ritar stats:
+        Gfx.text(36, 1, "DMG:" + game.Game.player.dmg);
         
         // ritar text
         Gfx.text(52, 1, "Quests");
