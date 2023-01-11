@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <wearable class="suit" id="1">
+	    <name>Naken Kropp</name>
+		<desc>Du står naken med din fräna kropp i vinden</desc>
+		<img>s</img>
+		<proc>0</proc>
+		<effecttype>hp</effecttype>
+		<effect>20</effect>
+		<neg>0</neg>
+		<extr>s</extr>
+	</wearable>
+	<wearable class="weapon" id="1">
+	    <name>Knytnävar</name>
+		<desc>Du slåss med dina händer</desc>
+		<img>s</img>
+		<proc>0</proc>
+		<effecttype>dmg</effecttype>
+		<effect>20</effect>
+		<neg>0</neg>
+		<extr>s</extr>
+	</wearable>
+	<wearable class="amulet" id="1">
+	    <name>Slips</name>
+		<desc>Du har en äcklig slips på dig</desc>
+		<img>s</img>
+		<proc>1</proc>
+		<effecttype>dmg</effecttype>
+		<effect>2</effect>
+		<neg>0</neg>
+		<extr>s</extr>
+	</wearable>
+	
+	<consumable class="mana" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<proc></proc>
+		<effecttype></effecttype>
+		<effect></effect>
+		<neg>0</neg>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="health" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<proc></proc>
+		<effecttype></effecttype>
+		<effect></effect>
+		<neg>0</neg>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="strength" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<proc></proc>
+		<effecttype></effecttype>
+		<effect></effect>
+		<neg>0</neg>
+		<extr></extr>
+	</consumable>
+	
+	<consumable class="easter" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<proc></proc>
+		<effecttype></effecttype>
+		<effect></effect>
+		<neg>0</neg>
+		<extr></extr>
+	</consumable>
+	
+	<quest class="quest" id="1">
+	    <name></name>
+		<desc></desc>
+		<img></img>
+		<proc></proc>
+		<effecttype></effecttype>
+		<effect></effect>
+		<neg>0</neg>
+		<extr></extr>
+	</quest>
+</items>
