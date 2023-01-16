@@ -51,6 +51,7 @@ public class Keyboard_handler implements NativeKeyListener {
     			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy-1);
     	    		if(f == "do") {
+    	    			game.Game.player.pls.WLAE(keyq[0]);
     	    			Game.tpposy -= 1;
     	    			tim.setTimer();
     	    			
@@ -72,6 +73,7 @@ public class Keyboard_handler implements NativeKeyListener {
     			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx-1, Game.tpposy);
     	    		if(f == "do") {
+    	    			game.Game.player.pls.WLAE(keyq[0]);
     	    			Game.tpposx -= 1;
     	    			tim.setTimer();
     	    			
@@ -93,7 +95,9 @@ public class Keyboard_handler implements NativeKeyListener {
     			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx, Game.tpposy+1);
     	    		if(f == "do") {
+    	    			game.Game.player.pls.WLAE(keyq[0]);
     	    			Game.tpposy += 1;
+    	    			
     	    			tim.setTimer();
     	    			
     	    		} else {
@@ -114,7 +118,9 @@ public class Keyboard_handler implements NativeKeyListener {
     			if(tim.mil(tim.intervall()) >= 250/game.Game.player.sp) {
     				String f = gfxproc.Maphandler.Mappas(Game.tpposx+1, Game.tpposy);
     	    		if(f == "do") {
+    	    			game.Game.player.pls.WLAE(keyq[0]);
     	    			Game.tpposx += 1;
+    	    		
     	    			tim.setTimer();
     	    			
     	    		} else {

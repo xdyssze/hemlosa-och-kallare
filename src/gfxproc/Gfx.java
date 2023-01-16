@@ -24,6 +24,7 @@ public class Gfx {
 		        sizey = Integer.parseInt(args[2]);
 		        pix = new Segment[sizex*sizey];		        
 		        SpriteHandler.main();
+		        
 		        Seghand("cr", 0, 0, ' ');
                 break;
 		    }
@@ -144,10 +145,11 @@ public class Gfx {
 			       
 								
 				   // NodeList d = xHand.main.getChildNodes();
-				    plays = new int[xHand.NodeLength()];		
+				    plays = initArray(xHand.NodeLength());	
 					sprites = new Sprite[xHand.NodeLength()];
-					objs = new int[xHand.NodeLength()];
-					chars = new int[xHand.NodeLength()];
+					objs = initArray(xHand.NodeLength());
+					chars = initArray(xHand.NodeLength());
+					
 					
 					for(int i = 0; i < (xHand.NodeLength()/2); i++) {
 						Node sp1 = xHand.NR("sprite", i);
@@ -158,25 +160,30 @@ public class Gfx {
 						String type = spr.getElementsByTagName("type").item(0).getTextContent();
 					    switch(type) {
 					    case("player"): {
-					    	addToEnd(plays, ((i+1)/2), null, null);
-					    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
+					    	addToEnd(plays, ((i+1)), null, null);
+					    	sprites[((i+1))] = new Sprite(((i+1)), spr);
 					    	break;
 					    }
 	                    case("object"): {
-	                    	addToEnd(objs, ((i+1)/2), null, null);
-	                    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
+	                    	addToEnd(objs, ((i+1)), null, null);
+	                    	sprites[((i+1))] = new Sprite(((i+1)), spr);
 					    	break;
 					    }
 	                    case("character"): {
-	                    	addToEnd(chars, ((i+1)/2), null, null);
-	                    	sprites[((i+1)/2)] = new Sprite(((i+1)/2), spr);
+	                    	addToEnd(chars, ((i+1)), null, null);
+	                    	sprites[((i+1))] = new Sprite(((i+1)), spr);
 					    	break;
 					    }	
 					    
 					    }
 						}
 						
-					}				
+					}
+					for(Sprite sprs : sprites) {
+						if(sprs != null) {
+			        	game.Game.lg.Logbuilder("STRING \r\n " + sprs.s + "\r\n");
+						}
+			        }
 					
 		}
 		public static Sprite nF(String name) {
@@ -190,13 +197,13 @@ public class Gfx {
 		public static Sprite idtF(int id, String type) {
 			switch(type) {
 			case("player"): {
-				return(sprites[plays[id]]);
+				return(sprites[plays[id-1]]);
 			}
 			case("character"): {
-				return(sprites[chars[id]]);			
+				return(sprites[chars[id-1]]);			
 			}
 			case("object"): {
-				return(sprites[objs[id]]);				
+				return(sprites[objs[id-1]]);				
 			}			
 			}
 			return(null);
@@ -217,6 +224,7 @@ public class Gfx {
 			}		    			
 			
 		}
+		
 		public static String SpriteS(String[] arg) {
 			Sprite sss = SpriteF(arg);
 			return(sss.s);
@@ -327,16 +335,19 @@ public class Gfx {
 	public static void addToEnd(int[] a, int v, String[] as, String vs) {
 		   if(a == null) {
 			   for(int i = 0; i < as.length; i++) {
-				   if(as[i] != null) {
+				   if(as[i] == null) {
 					   as[i] = vs;
 					   i = as.length;
+					   
 				   }			   
 			   }
 		   } else {
 			   for(int i = 0; i < a.length; i++) {
-				   if(a[i] == 0) {
+				   if(a[i] == (-1)) {
+					   //game.Game.lg.Logbuilder("** " + a[i] + " ** " + i + " ** ");
 					   a[i] = v;
 					   i = a.length;
+					   
 				   }			   
 			   }
 		   }		
@@ -346,8 +357,16 @@ public class Gfx {
 	    try {
 	        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 	    } catch (IOException | InterruptedException ex) {}
-	    }
+	}
+    
 	
-}
 
+    public static int[] initArray(int s) {
+    	int[] a = new int[s];
+	    for(int i = 0; i < a.length; i++) {
+		    a[i] = (-1);
+	    }
+	    return(a);
+}
+}
 

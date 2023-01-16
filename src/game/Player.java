@@ -227,17 +227,23 @@ public class Player {
     	String[] standardSprites;
     	byte cmPos;
         byte cs;
+        // Laddar in alla spelarsprites från xml
     	public PlayerSprite() {
     		
     		standardSprites = new String[12];
             for(int i = 0; i < 12; i++) {
             	String[] a = {String.valueOf((i+1)), "player"};
             	standardSprites[i] = Gfx.SpriteHandler.SpriteS(a);
+            	game.Game.lg.Logbuilder(standardSprites[i]);
             }          
     	}
+    	// Skcikar spriten som är den nuvarande.
     	public String cSprite() {
+    		//game.Game.lg.Logbuilder(" CSPRITE: " + cs + " * " + cmPos + " * ") ;
     		return(standardSprites[cs]);
     	}
+    	// i princip det som byter spelarsprites mellan varje steg, och riktning. Fungerar på att det bestämt finns 12 sprites.
+    	// När 
     	public void WLAE(char s) {
     		if(game.Keyboard_handler.cK) {
     			cmPos = 0;
@@ -245,7 +251,7 @@ public class Player {
     		}
     		switch(s) {
     		case('W'): {
-    			if(cmPos < 3) {
+    			if(cmPos >= 3) {
     				cmPos = 0;
     			}
     			cs = (byte)(cmPos);
@@ -254,7 +260,7 @@ public class Player {
     		}
     		
     		case('A'): {
-    			if(cmPos < 9) {
+    			if(cmPos < 6 || cmPos >= 8) {
     				cmPos = 6;
     			}
     			cs = (byte)(cmPos);
@@ -263,7 +269,7 @@ public class Player {
     		}
     		
     		case('S'): {	
-    			if(cmPos < 6) {
+    			if(cmPos < 3 || cmPos >= 5) {
     				cmPos = 3;
     			}
     			cs = (byte)(cmPos);
@@ -272,17 +278,17 @@ public class Player {
     		}
     		
     		case('D'): {
-    			if(cmPos < 12) {
+    			if(cmPos < 9 || cmPos >= 11) {
     				cmPos = 9;
     			}
     			cs = (byte)(cmPos);
     			cmPos++;
     			break;
     		}
-    		case('*'): {
-    			cs = 3;
-    			break;
-    		}
+    		//case('*'): {
+    		//	cs = 3;
+    		//	break;
+    		//}
     		
     	}
     	}

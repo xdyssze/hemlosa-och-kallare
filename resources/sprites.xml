@@ -99,7 +99,7 @@
 	<sprite>
         <id>1</id>
 		<type>object</type>
-		<img>testo</img>
+		<img>teso</img>
 		<sx>2</sx>
 		<sy>2</sy>
 		<px>2</px>
@@ -109,7 +109,7 @@
 	<sprite>
         <id>1</id>
 		<type>character</type>
-		<img>testc</img>
+		<img>tesc</img>
 		<sx>2</sx>
 		<sy>2</sy>
 		<px>2</px>
