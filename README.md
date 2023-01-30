@@ -7,3 +7,8 @@ Jnativehook används som externt bibliotek och det kräver även att jnativehook
 Ett spel som utväcklas som slutprojekt för Programering 1.
 
 Utvecklad av Roe Appelqvist
+
+Information:
+
+Nuvarande aktiv branch är npcadd, som arbetar med att lägga till andra karaktärer i spelet, tillsammans med funktioner så att man kan interaktera med dem, tex fights och 
+prat.
