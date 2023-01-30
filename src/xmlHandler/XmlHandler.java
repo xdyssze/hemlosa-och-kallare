@@ -8,7 +8,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import game.Game;
-
+/**
+ * A small application that parses xmlFiles in a way that makes it more easy for a person to understand,
+ * if they dont posses an extensive knowledge of xml. Aka makes it less cancer
+ * 
+ */
 public class XmlHandler {
     Document doc;
     public Element main;
@@ -40,11 +44,18 @@ public class XmlHandler {
 		
 	}	
 	
-	
+	/**
+	 * Counts the ammount of children in a node
+	 * @return nodes childnode length
+	*/
 	public int ChildNodeLength(Node n) {
 		return(((NodeList) n).getLength());
 	}
-	
+	/**
+	 * Counts the ammount of nodes with a specific name in a nodelist
+	 * if no node is specified then it chooses the main xml file
+	 * @return ammount of childnodes
+	 */
 	public int NodeCounter(Node f, String name) {
 		int i1 = 0;
 		if(f == null) {
@@ -58,13 +69,19 @@ public class XmlHandler {
 		return(i1);
 	}
 	
-	
+	/**
+	 * @return total childnode length of org file
+	 */
 	public int NodeLength() {
 		return(Integer.parseInt(param[0]));
 	}
+	/**
+	 * Searches for specific node that is one of the node objects and returns the first one
+	 * @return node with specified name
+	 */
 	public Node NRList(String name) {
 		for(int i = 0; i < NodeLength(); i++) {
-			if(this.nHand[i].getNodeName() == name) {
+			if(this.nHand[i].getNodeName().equals(name)) {
 				return(this.nHand[i]);
 			}
 		}
@@ -72,6 +89,10 @@ public class XmlHandler {
 		return(null);
 		
 	}
+	/**
+	 * Returns node with specific name in a new node array with a specific place, noted by Item
+	 * return node;
+	 */
 	public Node NR(String name, int Item) {
 		int i1 = 0;
 		Node[] tempNode = new Node[NodeLength()];
@@ -89,6 +110,10 @@ public class XmlHandler {
 		}
 		
 	}
+	/**
+	 * Get the node text content of a specific node with specific name
+	 * @return Node string
+	 */
 	public String getNodeText(String name, Node n) {
 		for(int i = 0; i < ChildNodeLength(n); i++) {
 			Node sex = n.getChildNodes().item(i);
@@ -102,7 +127,9 @@ public class XmlHandler {
         ErrorWriter("No TextNode With the name " + name + " was found");
         return(null);
 	}
-	
+	/**
+	 * Error writer that writes an error log according to the error, in a log file.
+	 */
 	public void ErrorWriter(String e) {
 		StackTraceElement[] STE = Thread.currentThread().getStackTrace();
 		StackTraceElement f = STE[2] ;

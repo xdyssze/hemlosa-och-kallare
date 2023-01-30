@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<homeless>
+    <homelesser id="1">
+	   
+	    <name>homeless1</name>
+		<img>  ####   # ^^ #  #    #  ******  ||  ||  "|__|"  _|  |_ </img>
+		<x>120</x>
+		<y>120</y>	
+		<room>5</room>
+		<dialouges>
+		    <dialouge id="1">
+				<text>
+				    <0>Sexig du e</0>
+					<1>Sex 2</1>
+					<2>sex 3</2>
+				</text>
+				<end>event:1</end>
+			</dialouge>
+		</dialouges>
+		<events>
+		    <event class="loot" id="1">
+			    <loot>wearable:suit:1</loot>
+			</event>
+		</events>
+		<moves>
+		    <move class="dmg" id="1">
+			    <name>Kuk</name>
+				<effecton>player</effecton>
+				<effect>20</effect>
+				<proc>0</proc>	
+			</move>
+			<move class="heal" id="2">
+			    <name>Kuk</name>
+				<effecton>homeless</effecton>
+				<effect>30</effect>
+				<proc>0</proc>	
+			</move>
+		</moves>
+		<xp>10</xp>
+		<drop></drop>
+		
+	</homelesser>
+</homeless>
