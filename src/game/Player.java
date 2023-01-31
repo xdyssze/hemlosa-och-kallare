@@ -3,7 +3,7 @@ import gfxproc.Gfx;
 
 import game.Itemhandler.Item;
 // föräldrarklassen, i princip innehåller alla små funktioner och klasser / attribut en spelare kan ha. Tex en spelare kan ha stats (altså en ny klass stats), samt kan en spelare ha en sprite (klassen playersprite).
-public class Player {
+public class Player extends game.Effect{
 	int x, y;
     public PlayerSprite pls;
     public Itemhandler iH;

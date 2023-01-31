@@ -61,7 +61,51 @@ public class Itemhandler {
 			i1++;
 		}
 	}	
-	
+	public void addItemToInv(String s, Item is) {
+		Item ss;
+		if(!s.isBlank()) {
+			String[] splits = s.split(":");
+			ss = (findItems(splits[0], splits[1]))[Integer.valueOf(splits[2])];
+			
+			
+		} else {
+			ss = is;
+		}
+		for(int i = 0; i < Game.player.inventory.length; i++) {
+			if(Game.player.inventory[i] == null) {
+				Game.player.inventory[i] = ss;
+				return;
+			}
+		}
+		
+	}
+	public Item[] findItems(String type, String subcat) {
+		Item[] items = new Item[50];
+		int i1 = 0;
+		if(subcat != "") {
+		    for(Item a : itemA) {
+		    	if(a.itemtype == type) {
+		    		items[i1] = a;
+		    		i1++;
+		    	}
+		    }	
+		} else {
+			for(Item a : itemA) {
+		    	if(a.itemtype == type) {
+		    		if(a.clas == subcat) {
+		    			items[i1] = a;
+			    		i1++;
+		    		}
+		    	}
+		    }
+		}
+		Item[] it = new Item[i1];
+		for(int i = 0; i < i1; i++) {
+			it[i] = items[i];
+		}
+		return(it);
+		
+	}
 	public int itemCounter() {
 		int count = 0;
 		for(Item ob : game.Game.player.inventory) {
@@ -71,6 +115,7 @@ public class Itemhandler {
 		}
 		return(count);
 	}
+	
 	// läser in items.xml via xHand.
     public void LoadItemsFromXML() {
     	xHand = new XmlHandler("items", false);

@@ -91,7 +91,7 @@ public class XmlHandler {
 	}
 	/**
 	 * Returns node with specific name in a new node array with a specific place, noted by Item
-	 * return node;
+	 * @return node;
 	 */
 	public Node NR(String name, int Item) {
 		int i1 = 0;
@@ -109,6 +109,15 @@ public class XmlHandler {
 			return(tempNode[Item]);
 		}
 		
+	}
+	public Node getNodeByName(Node n, String name) {
+		for(int i = 0; i < ChildNodeLength(n); i++) {
+			if(n.getChildNodes().item(i).getNodeName().equals(name)) {
+				return(n.getChildNodes().item(i));
+			}
+		}
+		ErrorWriter("No Node with name " + name + " was found");
+		return(null);
 	}
 	/**
 	 * Get the node text content of a specific node with specific name

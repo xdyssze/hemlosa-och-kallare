@@ -23,6 +23,7 @@ public class Game {
     public static Thread up1, maint;
     public static Maphandler maph;
     public static Logcreator lg;
+    public static game.Homeless_handler homHand;
     public static menugui.GUIManager menhand;
 	public static void main(String[] args) throws Exception {	
 		// i princip endast visar asciiarten i början och startar logcreatorn, detta då logcreatorn ska dokumentera och göra så jag kan debugga under hela startprocessen, därför är denna först igång innan allt annat så den faktiskt kan logga
@@ -58,6 +59,8 @@ public class Game {
 		// kan ändras till false i framtiden om jag vill lägga till sparfiler, säger till i princip att detta är den första gången spelet startas och allt ska skapas p ånytt
 		player = new Player(true);
 		player.iH.debugFillInv();
+		// SKapar hemlösa
+		homHand = new game.Homeless_handler();
 		// Start, bestämmer statet som att spelet är färdigt och ska börja köra vanliga spelrutiner.
 	    state = 1;			    
 		}

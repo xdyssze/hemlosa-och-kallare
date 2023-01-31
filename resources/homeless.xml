@@ -7,16 +7,18 @@
 		<x>120</x>
 		<y>120</y>	
 		<room>5</room>
-		<dialouges>
-		    <dialouge id="1">
+		<arm>0</arm>
+		<hp>40</hp>
+		<dialogues>
+		    <dialogue id="1">
 				<text>
 				    <0>Sexig du e</0>
 					<1>Sex 2</1>
 					<2>sex 3</2>
 				</text>
 				<end>event:1</end>
-			</dialouge>
-		</dialouges>
+			</dialogue>
+		</dialogues>
 		<events>
 		    <event class="loot" id="1">
 			    <loot>wearable:suit:1</loot>
@@ -36,8 +38,6 @@
 				<proc>0</proc>	
 			</move>
 		</moves>
-		<xp>10</xp>
-		<drop></drop>
-		
+		<xp>10</xp>	
 	</homelesser>
 </homeless>
