@@ -61,6 +61,11 @@ public class Itemhandler {
 			i1++;
 		}
 	}	
+	/**
+	 * Lägger till Föremål till inventoriet, antingen ett föremålobjekt direkt eller en föremålskod
+	 * @param s
+	 * @param is
+	 */
 	public void addItemToInv(String s, Item is) {
 		Item ss;
 		if(!s.isBlank()) {
@@ -79,6 +84,7 @@ public class Itemhandler {
 		}
 		
 	}
+	
 	public Item[] findItems(String type, String subcat) {
 		Item[] items = new Item[50];
 		int i1 = 0;

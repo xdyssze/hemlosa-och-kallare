@@ -68,7 +68,6 @@ public class XmlHandler {
 		}
 		return(i1);
 	}
-	
 	/**
 	 * @return total childnode length of org file
 	 */

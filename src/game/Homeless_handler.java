@@ -18,5 +18,8 @@ public class Homeless_handler {
 	    currentInteraction = homlesseses[0];
 	    
 	}
+	void onInteraction() {
+		
+	}
 
 }

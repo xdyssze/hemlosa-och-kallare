@@ -56,7 +56,7 @@ public class Maphandler {
     			f += String.valueOf(mp[cmap-1].mp.charAt(320*(y+i)+(x+7)));
     			
     		}
-    		
+    		// helt efterblivet
             if(f.contains("1")) {
             	return("no");
             } else {

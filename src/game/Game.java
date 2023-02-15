@@ -38,7 +38,7 @@ public class Game {
 		// Ascii art show i princip, rensar skärmen och visar steffe, sedan sover i 2000 milisec
 		Gfx.CLS();	
 		System.out.println(Game.ascii);
-		Sleep(2000);
+		Sleep(8000);
 		// Thread Start, progressbar
 		// startar update som i princip är en klocka och bestämmer allt som händer i en ny tråd.
 		state = 0;					
@@ -60,7 +60,7 @@ public class Game {
 		player = new Player(true);
 		player.iH.debugFillInv();
 		// SKapar hemlösa
-		homHand = new game.Homeless_handler();
+		//homHand = new game.Homeless_handler();
 		// Start, bestämmer statet som att spelet är färdigt och ska börja köra vanliga spelrutiner.
 	    state = 1;			    
 		}

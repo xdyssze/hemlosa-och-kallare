@@ -31,8 +31,23 @@ public class Homeless  {
 		for(int i = 0; i < this.mov.length; i++) {
 			this.mov[i] = new Move(xmHand.getNodeByName(node, "moves").getChildNodes().item(i));
 		}
+		for(int i = 0; i < this.ev.length; i++) {
+			this.ev[i] = new Event(xmHand.getNodeByName(node, "events").getChildNodes().item(i));
+		}
+		for(int i = 0; i < this.dia.length; i++) {
+			this.dia[i] = new Dialogue(xmHand.getNodeByName(node, "dialogue").getChildNodes().item(i));
+		}
+		
+		
+		
 		
 	}
+	
+	// place char
+	void placeChar() {
+		
+	}
+	// Homeless functions, on homless
 	public void healthEffect(boolean neg, boolean proc, double effect) {
     	if(proc) {
     		if(neg) {
@@ -95,8 +110,23 @@ public class Homeless  {
 	}
 	// Dialog class som hanterar en dialog av alla en hemlösa kan ha.
 	class Dialogue {
-		Dialogue() {
+		int id;
+		String end;
+		String[] text;
+		Dialogue(Node s) {
+			this.id = Integer.valueOf(s.getAttributes().getNamedItem("id").getTextContent());
+			this.end = xmHand.getNodeText("end", s);
+			Node tex = xmHand.getNodeByName(s, "text");
+			this.text = new String[xmHand.ChildNodeLength(tex)];
+			for(int i = 0; i < this.text.length; i++) {
+				text[i] = xmHand.getNodeText(String.valueOf(i), tex);
+			}
 			
+			
+		}
+		
+		public void end() {
+			Game.homHand.currentInteraction.ev[Integer.valueOf(this.end.split(":")[2])-1].event();;
 		}
 	}
 

@@ -45,4 +45,21 @@ l;'..   .  ....      ...'kNNWWWN0OOOOkkkxxxxkO0XXK000OOkkx:.
  /        \|  | \  ___/|  |   |  | \  ___/  |    |__(  <_> )  |   \   /\  ___/|   |  \
 /_______  /|__|  \___  >__|   |__|  \___  > |_______ \____/|__|    \_/  \___  >___|  /
         \/           \/                 \/          \/                      \/     \/ 
+
+
+
+Tangenter i spelet:
+
+  W       -       Gå Frammåt 
+  A       -       Gå till vänster
+  S       -       Gå Bakåt
+  D       -       Gå till höger
+  I       -       Inventory meny
+
+
+  Mellanslag  -   Uför nuvarande selected val   
+
+
+
+SPELET LADDAR, vänta i 8 sek...
    
