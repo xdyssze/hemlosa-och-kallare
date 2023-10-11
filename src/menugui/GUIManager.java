@@ -1,29 +1,51 @@
 package menugui;
 
-import menugui.Gui;
+
 
 // i princip är detta klassen som importeras, och kör varje javafil sepera
 public class GUIManager {
     String currentGUI;
-    String[] guiName;
-    byte currentlySelected;
-    public Gui gui;
+    public GuiI gui;
 	public GUIManager() {
-		currentGUI = "esc";
-		currentlySelected = 0;
+		currentGUI = "";
+
 	}
     public void setGUI(String g) {
+    	switch(g) {
+    	case("esc"): {
+    		gui = new menugui.EscGUI();
+    		break;
+    	}
+    	case("inv"): {
+    		gui = new menugui.InventoryGUI();
+    		break;
+    	}
+    	case("char"): {
+    		gui = new menugui.CarachterGUI();
+    		break;
+    	}
+    	case("main"): {
+    		gui = new menugui.MainMenuGUI();
+    		
+    		break;
+    	}
+    	}
+    	drawGUI();
     	currentGUI = g;
-    	gui = new Gui(g);
     }
+    
     public void drawGUI() {
-    	gui.draw();
+    	gui.drawMenu();
     }
-    // flyttar currentlySelected
+    
+    
+    
+    // flyttar
+    
+    
     public void mvPos(char d, int s) {
     	if(gui.checkmv(d)) {
-    		currentlySelected = (byte) s;
-    		gui.currentlySelected = this.currentlySelected;
+    		gui.currentlySelected = (byte) s;
     	};
     }
     public void action() {

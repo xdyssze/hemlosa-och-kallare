@@ -3,18 +3,20 @@ package menugui;
 import game.Player;
 import gfxproc.Gfx;
 
-public class CarachterGUI {
-	public byte height, width, sh, sw, ih, iw;
+public class CarachterGUI extends menugui.GuiI{
 	
 	
 	public CarachterGUI() {
+		super();
+
 		ih = 3;
 		iw = 1;
+		
 		 
 	}
-	
-    public void drawMenu(int cs) {
-    	
+	@Override
+    public void drawMenu() {
+    	Gfx.clearSec();
     	
     	//ritar lådor på hörn med items i
         Gfx.drawBox(0, 0, 15, 7, "solid", true);
@@ -47,8 +49,8 @@ public class CarachterGUI {
 		
 		// ritar beskrivningsmenyn
     }
-    
-    public void action(int cs) {
+    @Override
+    public void action() {
     	
     	
     }

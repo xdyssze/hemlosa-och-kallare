@@ -3,11 +3,11 @@ package menugui;
 
 import  gfxproc.Gfx;
 /// ska rita på en bit av skärmen, nedifrånn, pausa spelet, 
-public class EscGUI {
-	byte height, width, sh, sw, iw, ih;
+public class EscGUI extends menugui.GuiI{
     public String[] menuItems;
     char[] keyEnabled;
 	public EscGUI() {
+		super();
 		// ställer in lite or värden
 		menuItems = new String[4];
 		menuItems[0] = game.Game.player.name;
@@ -23,7 +23,7 @@ public class EscGUI {
 		
 	}
 	
-	public void drawMenu(int currentlySelected) {
+	public void drawMenu() {
 		// ritar alla lådor baserat på vad som är selected
 	     Gfx.drawBox(0, 35, width-1, (34+height), "solid", true);  
 	     Gfx.drawBox((currentlySelected*sw)+2, 36,(currentlySelected*sw)+21 , 38, "solid", true);
@@ -37,18 +37,15 @@ public class EscGUI {
 		System.out.print(r);	
 	}
 	// action ba
-	public void action(int currentlySelected) {
+	
+	public void action() {
 		switch(currentlySelected) {
 		case(0): {
 			game.Game.menhand.setGUI("char");
-			game.Game.menhand.currentlySelected = 0;
-			game.Game.menhand.drawGUI();
 			break;
 		}
 		case(1): {
 			game.Game.menhand.setGUI("inv");
-			game.Game.menhand.currentlySelected = 0;
-			game.Game.menhand.drawGUI();
 			break;
 		}
 		case(3): {

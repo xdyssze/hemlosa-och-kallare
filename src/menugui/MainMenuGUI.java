@@ -2,10 +2,22 @@ package menugui;
 
 import gfxproc.Gfx;
 
-public class MainMenuGUI {
-	public byte height, width, sh, sw, ih, iw;
+public class MainMenuGUI extends GuiI{
+
 	
 	public MainMenuGUI() {
+		super();
+	}
+
+	@Override
+	void drawMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void action() {
+		// TODO Auto-generated method stub
 		
 	}
 

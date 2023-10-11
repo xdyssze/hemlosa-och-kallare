@@ -1,6 +1,13 @@
 package menugui;
 
 import gfxproc.Gfx;
+/*
+
+
+
+public interface gui {
+	
+}
 
 public class Gui {
 	public byte height, width, sh, sw;
@@ -126,3 +133,4 @@ public class Gui {
 	
 
 }
+*/
