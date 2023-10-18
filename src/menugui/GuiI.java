@@ -10,11 +10,7 @@ public abstract class GuiI {
 	}
 	
     abstract void drawMenu();
-    abstract void action();
-    public void setSelected(Object s) {
-    	this.currentlySelected = (int) s;
-    }
-    
+    abstract void action();    
     public boolean checkmv(char dir) {
 		switch(dir) {
 		case('a'): {

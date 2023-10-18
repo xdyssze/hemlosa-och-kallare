@@ -5,7 +5,7 @@ import  gfxproc.Gfx;
 /// ska rita på en bit av skärmen, nedifrånn, pausa spelet, 
 public class EscGUI extends menugui.GuiI{
     public String[] menuItems;
-    char[] keyEnabled;
+    
 	public EscGUI() {
 		super();
 		// ställer in lite or värden
@@ -22,7 +22,7 @@ public class EscGUI extends menugui.GuiI{
 		ih = 1;
 		
 	}
-	
+	@Override
 	public void drawMenu() {
 		// ritar alla lådor baserat på vad som är selected
 	     Gfx.drawBox(0, 35, width-1, (34+height), "solid", true);  
@@ -37,7 +37,7 @@ public class EscGUI extends menugui.GuiI{
 		System.out.print(r);	
 	}
 	// action ba
-	
+	@Override
 	public void action() {
 		switch(currentlySelected) {
 		case(0): {

@@ -80,6 +80,7 @@ public class Player {
 	    }
     	
     }
+    // detta går att förbättras med inhertance och föräldraklasser. Alternativt att en effect är en funktion i princip, med enkel beräkning.
     public void calculateStat() {
     	double con1, con2, con3;
     	con1 = bhp;
