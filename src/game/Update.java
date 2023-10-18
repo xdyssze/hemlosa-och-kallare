@@ -8,7 +8,7 @@ public class Update implements Runnable{
 	public boolean running;
 	public int prevposx, prevposy;
 	public String prevs;
-	
+	Process proces;
 	
 	
 	
@@ -20,8 +20,10 @@ public class Update implements Runnable{
 	
 	
 	//
-	public void run() {
+	
 
+	public void run() {
+        
         switch(game.Game.state) {
             case (0): {
             	Game.lg.Logbuilder("State changed to 0");
@@ -71,7 +73,7 @@ public class Update implements Runnable{
 			
 		}
 		Game.lg.Logbuilder("PROGRESSBAR STOPPED");
-		Game.lg.Logwriter();
+		
 		run();
 	}
 	public void up() {		
@@ -84,11 +86,11 @@ public class Update implements Runnable{
 		}
 		prevposx = game.Game.tpposx;
 		prevposy = game.Game.tpposy;
-		Game.lg.Logwriter();
+		
 		t2 = System.nanoTime();
-		if(((t2-t1)) < ((1/30)*1000000000)) {
+		if(((t2-t1)) < ((1/10)*1000000000)) {
 		    try {
-		    	Thread.sleep(((1/30)*100)-(t2-t1)/1000000);
+		    	Thread.sleep(((1/10)*100)-(t2-t1)/1000000);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
@@ -110,7 +112,7 @@ public class Update implements Runnable{
     		//CLS();
     		//System.out.print(r);	
     		Sleep(100);
-    		Game.lg.Logwriter();
+    		
     		
     	}
     	run();
@@ -123,15 +125,17 @@ public class Update implements Runnable{
     
    
 	public static void CLS() {
-    	
-	    
+		System.out.print("\033[H\033[2J");  
+		System.out.flush();
+		
+	    /*
 	    try {
 	        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 	    } catch (IOException | InterruptedException e) {e.printStackTrace();}
             
 	    }
-	    
-
+	    */
+	}
 	private static void Sleep(int to) {
 		try {
 									
