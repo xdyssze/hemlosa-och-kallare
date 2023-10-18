@@ -86,16 +86,17 @@ public class Update implements Runnable{
 		prevposy = game.Game.tpposy;
 		Game.lg.Logwriter();
 		t2 = System.nanoTime();
-		if(((t2-t1)/1000000) < (1/30)) {
+		if(((t2-t1)) < ((1/30)*1000000000)) {
 		    try {
-				Thread.sleep(((1/20)-((t2-t1)/1000000))*1000);
+		    	Thread.sleep(((1/30)*100)-(t2-t1)/1000000);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
 			}
 		}
-		
+		Game.lg.Logbuilder("Time for prev frame: " + (t2-t1));
 		}
+		
 		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
 		run();
 		

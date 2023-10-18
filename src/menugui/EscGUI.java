@@ -1,6 +1,7 @@
 package menugui;
 // ska hantera en menyseqvens, inv osvs
 
+import game.Game;
 import  gfxproc.Gfx;
 /// ska rita på en bit av skärmen, nedifrånn, pausa spelet, 
 public class EscGUI extends menugui.GuiI{
@@ -49,6 +50,7 @@ public class EscGUI extends menugui.GuiI{
 			break;
 		}
 		case(3): {
+			Game.lg.Logwriter();
 			System.exit(0);
 			break;
 		}

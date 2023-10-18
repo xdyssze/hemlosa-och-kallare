@@ -10,10 +10,11 @@ import java.time.LocalDateTime;
 public class Logcreator {
 	
 	public static String date;
-	public static String log;
+
 	static Path fname;
+	private String logBuffer;
     public Logcreator () {
-    	
+    	    logBuffer = "";
     		DateTimeFormatter d = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
     		LocalDateTime da = LocalDateTime.now();
     		date = d.format(da);
@@ -30,17 +31,18 @@ public class Logcreator {
     	
     }
     public void Logbuilder(String ev) {
-    	log += ev + " ";
+    	logBuffer += LocalDateTime.now() + ":   " + ev + "\r\n ";
     }
+    
     public boolean Logwriter() {
     	
     	try {
-    	  Files.writeString(fname, LocalDateTime.now() + ":    " + log + "\r\n", StandardOpenOption.APPEND);
-    	  log = "";
+    	  Files.writeString(fname, logBuffer, StandardOpenOption.APPEND);
+          logBuffer ="";
     	  return(true);
     	} catch(IOException e) {
     		e.printStackTrace();
-    		log = "";
+    		logBuffer = "";
     		return(false);
     	}
     	
