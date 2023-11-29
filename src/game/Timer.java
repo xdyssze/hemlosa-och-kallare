@@ -3,6 +3,7 @@ package game;
 
 public class Timer {
 	long t0, t1, rtms, rts;
+
 	public boolean running;
 
 	public Timer() {
@@ -10,6 +11,7 @@ public class Timer {
 	    t0 = System.nanoTime();
 	    running = true;
 	}
+	
 	public void setTimer() {
 		t1 = System.nanoTime();
 	}
@@ -22,5 +24,22 @@ public class Timer {
 	public long intervall() {
 		return(System.nanoTime()-t1);
 	}
+	
+	class Time {
+		private long tid;
+	    int prefix;
+		Time() {
+			
+		}
+		
+		public long mil() {
+			return(tid/1000000);
+		}
+		public long sec() {
+			return(tid/1000000000);
+		}
+	}
 
 }
+
+
