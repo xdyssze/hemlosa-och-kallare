@@ -60,6 +60,7 @@ public class Itemhandler {
 			itemA[i1] = new Item(w);
 			i1++;
 		}
+		
 	}	
 	
 	public int itemCounter() {
@@ -160,8 +161,7 @@ public class Itemhandler {
 	    	if(w == null) {
 	    		System.out.println("yay gay");
 	    		this.itemtype = "gay";
-	    		game.Game.lg.Logbuilder(" gay ");
-	    		game.Game.lg.Logwriter();
+	    		
 	    	} else {
 	    	this.itemtype = w.getNodeName();
 	    	NamedNodeMap s = w.getAttributes();
@@ -175,7 +175,6 @@ public class Itemhandler {
     	    this.neg = xHand.getNodeText("neg", w).equals("1");
     	    this.name = xHand.getNodeText("name", w);
     	    game.Game.lg.Logbuilder(" sex " + this.name);
-    	    game.Game.lg.Logwriter();
     	    this.desc = xHand.getNodeText("desc", w);
     	    this.effecttype = xHand.getNodeText("effecttype", w);
     	    this.effect = xHand.getNodeText("effect", w);	 
@@ -183,7 +182,6 @@ public class Itemhandler {
     	    } catch(Exception e) {
     	    	e.printStackTrace();
     	    	game.Game.lg.Logbuilder(" sex " + this.name);
-        	    game.Game.lg.Logwriter();
     	    }
 	    	}
 	    }	

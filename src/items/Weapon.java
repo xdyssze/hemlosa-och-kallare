@@ -1,7 +1,7 @@
 package items;
 
-public abstract class Weapon {
-
+public class Weapon extends Wearable {
+    String attackTypes;
 	public Weapon() {
 		// TODO Auto-generated constructor stub
 	}

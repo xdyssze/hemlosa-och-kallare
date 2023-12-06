@@ -107,7 +107,6 @@ public class XmlHandler {
 		StackTraceElement[] STE = Thread.currentThread().getStackTrace();
 		StackTraceElement f = STE[2] ;
 		Game.lg.Logbuilder("XmlHandler: Error in Function " + f.getMethodName() +  ", " + e );
-		Game.lg.Logwriter();
 		
 	}
 }

@@ -96,7 +96,6 @@ public class Update implements Runnable{
 				e.printStackTrace();
 			}
 		}
-		Game.lg.Logbuilder("Time for prev frame: " + (t2-t1));
 		}
 		
 		Game.lg.Logbuilder("UPDATE PROCESS STOPPED");
@@ -123,7 +122,7 @@ public class Update implements Runnable{
     
     // timing functions
     
-   
+    
 	public static void CLS() {
 		System.out.print("\033[H\033[2J");  
 		System.out.flush();

@@ -28,7 +28,6 @@ public class Keyboard_handler implements NativeKeyListener {
 			// vid provlem så gör den följande
 			Game.lg.Logbuilder("There was a problem registering the native hook.");
 			Game.lg.Logbuilder(ex.getMessage());
-			Game.lg.Logwriter();
 			System.exit(1);
 		}
         // assignar denna klass som avlyssnare och vid en keypress så kommer den söka upp specifikt denna klass

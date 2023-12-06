@@ -255,7 +255,7 @@ public class Gfx {
 			this.sid = Integer.valueOf(d.getElementsByTagName("id").item(0).getTextContent());
 			this.type = (String) d.getElementsByTagName("type").item(0).getTextContent();
 			Game.lg.Logbuilder("\r\n"+this.type+" TYPE; \r\n");
-			Game.lg.Logwriter();
+			
 			this.s = d.getElementsByTagName("img").item(0).getTextContent();
 			this.sx = Integer.valueOf(d.getElementsByTagName("sx").item(0).getTextContent());
 			this.sy = Integer.valueOf(d.getElementsByTagName("sy").item(0).getTextContent());

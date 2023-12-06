@@ -1,6 +1,6 @@
 package items;
 
-public abstract class Amulet {
+public class Amulet extends Wearable {
 
 	public Amulet() {
 		// TODO Auto-generated constructor stub

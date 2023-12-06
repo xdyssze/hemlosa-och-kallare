@@ -1,7 +1,10 @@
 package game;
 import gfxproc.Gfx;
+import xmlHandler.XmlHandler;
 
-import game.Itemhandler.Item;
+import org.w3c.dom.Node;
+
+import items.Item;
 // föräldrarklassen, i princip innehåller alla små funktioner och klasser / attribut en spelare kan ha. Tex en spelare kan ha stats (altså en ny klass stats), samt kan en spelare ha en sprite (klassen playersprite).
 public class Player {
 	int x, y;
@@ -10,17 +13,25 @@ public class Player {
 	public String name;
 	public int aQ;
 	public Item[] equipped;
-	double hp;
+	public double hp;
 	public double dmg;
-	double sp;
-	double bhp;
-	double bdmg;
-	double bsp;
+	public double sp, bhp;
+	public double bdmg;
+	public double bsp;
+	
+	public static XmlHandler xHand;
     StatEffect[] activeEffects;
 	public Item[] inventory;
+	int itemAmount;
+	int nW, nC, nM;
+	Item[] itemA;
     public Player(boolean init) {
     	// STILLA NERÅT POs
+    	xHand = new XmlHandler("items", false);
+    	// Denna ska var temp TODO göra denna dynamisk
+    	itemAmount = 5;
     	
+    	// sex
     	pls = new PlayerSprite();
     	pls.cs = 3;
     	aQ = 2;
@@ -35,12 +46,21 @@ public class Player {
     		hp = bhp;
     		dmg = bdmg;
     		sp = bsp;
-    		iH = new Itemhandler();
+    		
+    		
+    		// detta är för items
+    		LoadItemsFromXML();
+    		this.nW = xHand.NodeCounter(null, "wearable");
+    		this.nC = xHand.NodeCounter(null, "consumable");
+    		this.nM = xHand.NodeCounter(null, "quest");
+    		// Itemarray är en array av alla items vi har, som kan kommas åt vid behov.
+    		itemA = new Item[(this.nW+this.nC+this.nM)];
+    		
     		inventory = new Item[99];
     		// plats 0 = dräkt,1 = amulet, 2 = vapen
     		equipped = new Item[3];
     	} else {
-    		iH = new Itemhandler();
+    		
     		inventory = new Item[99];
     	}
     	
@@ -64,6 +84,25 @@ public class Player {
 	    }
     	
     }
+    
+    public void removeItem(int item) {
+    	int marker = -1;
+      for(int i = 0; i < itemAmount; i++) {
+    	  if(inventory[i].id == item) {
+    		  marker = i;
+    		  inventory[i] = null;
+    		  i = itemAmount-1;
+    	  }
+    	  
+      }
+      if(marker != -1) {
+          for(int i = marker; i < itemAmount-1; i++) {
+    	      inventory[i] = inventory[i+1];
+          }
+      }
+    }
+    
+    
     public void damageEffect(boolean neg, boolean proc, double effect) {
     	if(proc) {
     		if(neg) {
@@ -192,17 +231,73 @@ public class Player {
     
     
     
+    // undra ifall det inte är smartare att bara göra om allt ist, Stateffect är i princip onödigt.
+    // man kan ist bara ha items som equipas och dequipas, och 
     
     
     
-    
-    
+	// skapar föremål genom att gå igenom alla xmlnoder och ta deras atribut, sedan stoppa in dem i ett nytt item som går rakt in i itemarrayen.
+	public void debugFillInv() {
+		int is = 0;
+		for(Item obj : itemA) {
+			game.Game.player.inventory[is] = obj;
+			is++;
+		};
+	}
+	public void createItems() {
+		int i1 = 0;
+		for(int i = 0; i < this.nW; i++) {
+			Node w = xHand.NR("wearable", i);
+			switch(w.getAttributes().getNamedItem("class").getTextContent()) {
+			case("amulet"): {
+				itemA[i1] = new items.Amulet(w);
+				break;
+			}
+			case("suit"): {
+				itemA[i1] = new items.Suit(w);
+				break;
+			}
+			case("weapon"): {
+				itemA[i1] = new items.Weapon(w);
+				break;
+			}
+			
+			}
+			itemA[i1] = new items.;
+			i1++;
+		}
+		for(int i = 0; i < this.nC; i++) {
+			Node w = xHand.NR("consumable", i);
+			itemA[i1] = new Item(w);
+			i1++;
+		}
+		for(int i = 0; i < this.nM; i++) {
+			Node w = xHand.NR("quest", i);
+			itemA[i1] = new Item(w);
+			i1++;
+		}
+		
+	}	
+	
+	public int itemCounter() {
+		int count = 0;
+		for(Item ob : this.inventory) {
+			if(ob != null) {
+				count++;
+			}
+		}
+		return(count);
+	}
+	// läser in items.xml via xHand.
+    public void LoadItemsFromXML() {
+    	xHand = new XmlHandler("items", false);
+    }	
     // KLASSER
     static public class StatEffect {
     	
     	byte state;
     	boolean neg, proc; 
-    	String efOn, name, desc, img, value;
+    	String efOn, name, desc, value;
     	public StatEffect(String nam, String des, String efO, String v, boolean ne, boolean pro) {
     		if(!nam.isEmpty()) {
     			this.value = v;
