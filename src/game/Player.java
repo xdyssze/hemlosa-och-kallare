@@ -88,7 +88,7 @@ public class Player {
     public void removeItem(int item) {
     	int marker = -1;
       for(int i = 0; i < itemAmount; i++) {
-    	  if(inventory[i].id == item) {
+    	  if(inventory[i].getId() == item) {
     		  marker = i;
     		  inventory[i] = null;
     		  i = itemAmount-1;
@@ -120,6 +120,7 @@ public class Player {
     	
     }
     // detta går att förbättras med inhertance och föräldraklasser. Alternativt att en effect är en funktion i princip, med enkel beräkning.
+    /*
     public void calculateStat() {
     	double con1, con2, con3;
     	con1 = bhp;
@@ -225,7 +226,7 @@ public class Player {
     }
     
     
-    
+    */
     
     
     
@@ -263,17 +264,27 @@ public class Player {
 			}
 			
 			}
-			itemA[i1] = new items.;
 			i1++;
 		}
 		for(int i = 0; i < this.nC; i++) {
 			Node w = xHand.NR("consumable", i);
-			itemA[i1] = new Item(w);
+			switch(w.getAttributes().getNamedItem("class").getTextContent()) {
+			case("health"): {
+				itemA[i1] = new items.HealthPotion(w);
+				break;
+			}
+			case("strength"): {
+				itemA[i1] = new items.DamagePotion(w);
+				break;
+			}
+			
+			
+			}
 			i1++;
 		}
 		for(int i = 0; i < this.nM; i++) {
 			Node w = xHand.NR("quest", i);
-			itemA[i1] = new Item(w);
+		    itemA[i1] = new items.Quest(w);
 			i1++;
 		}
 		

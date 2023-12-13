@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="86050fd2-8655-4898-9405-834c40cf82b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/game/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Quest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/items/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Weapon.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2ZTvXPC0A2I2v4bMjLbSMVlLZ0l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/roe.appelqvist/Documents/GitHub/hemlosa-och-kallare/src",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="86050fd2-8655-4898-9405-834c40cf82b7" name="Changes" comment="" />
+      <created>1702458922586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702458922586</updated>
+      <workItem from="1702458923597" duration="105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

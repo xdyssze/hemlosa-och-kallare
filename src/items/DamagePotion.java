@@ -24,4 +24,8 @@ public class DamagePotion extends Consumable {
     public void doEffect() {
 		game.Game.player.dmg += todo;
     }
+	 public void dequip() {
+			game.Game.player.dmg -= this.todo;
+			
+		}
 }

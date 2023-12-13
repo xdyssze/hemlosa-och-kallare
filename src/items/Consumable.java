@@ -6,11 +6,10 @@ import org.w3c.dom.Node;
 public abstract class Consumable implements Item {
 	String image, name, desc;
 	xmlHandler.XmlHandler xHand = game.Game.player.xHand;
-	int id;
 	Double effect;
 	boolean temp, neg, proc;
-	game.Player.StatEffect statEffect;
-	
+
+	int id;
 	public Consumable(Node w) {
 		NamedNodeMap s = w.getAttributes();
 		this.id = Integer.parseInt(s.getNamedItem("id").getNodeValue());
@@ -31,6 +30,23 @@ public abstract class Consumable implements Item {
 		
 	}
 	
+	public int getId() {
+			return(this.id);
+		}
+	public String[] getInfo() {
+		String[] temp = new String[7];
+		temp[0] = String.valueOf(this.proc);
+		temp[1] = String.valueOf(this.neg);
+		temp[2] = this.name;
+		temp[3] = this.desc;
+		temp[4] = String.valueOf(this.effect);
+		temp[5] = this.image;
+		temp[6] = this.getClass().getSimpleName();
+		return(temp);
+	}
+	public String getName() {
+		return(this.name);
+	}
 	public void equip() {
 		doEffect();
 		if(this.temp) {
@@ -41,10 +57,7 @@ public abstract class Consumable implements Item {
 	public abstract void doEffect();
 	
 	
-	public void dequip() {
-		game.Game.player.removeEffect(this.statEffect);
-		
-	}
+
 	
 
 }

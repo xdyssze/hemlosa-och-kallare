@@ -24,7 +24,7 @@ public class CarachterGUI extends menugui.GuiI{
         Gfx.drawBox(0, 16, 15, 23, "solid", true);
         for(int i = 0; i < 3; i++) {
         	if(game.Game.player.equipped[i] != null) {
-        	Gfx.text(1, 1+(i*8), game.Game.player.equipped[i].name);
+        	Gfx.text(1, 1+(i*8), game.Game.player.equipped[i].getName());
         	}
         }
         
