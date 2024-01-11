@@ -9,7 +9,6 @@ import items.Item;
 public class Player {
 	int x, y;
     public PlayerSprite pls;
-    public Itemhandler iH;
 	public String name;
 	public int aQ;
 	public Item[] equipped;
@@ -29,7 +28,7 @@ public class Player {
     	// STILLA NERÅT POs
     	xHand = new XmlHandler("items", false);
     	// Denna ska var temp TODO göra denna dynamisk
-    	itemAmount = 5;
+    	
     	
     	// sex
     	pls = new PlayerSprite();
@@ -57,8 +56,11 @@ public class Player {
     		itemA = new Item[(this.nW+this.nC+this.nM)];
     		
     		inventory = new Item[99];
+    		createItems();
+    		itemAmount = itemCounter();
     		// plats 0 = dräkt,1 = amulet, 2 = vapen
     		equipped = new Item[3];
+
     	} else {
     		
     		inventory = new Item[99];
@@ -88,18 +90,29 @@ public class Player {
     public void removeItem(int item) {
     	int marker = -1;
       for(int i = 0; i < itemAmount; i++) {
+    	  game.Game.lg.Logbuilder("sex1 " + item);
+    	  game.Game.lg.Logbuilder("sex2 " + inventory[i].getId());
+			game.Game.lg.Logwriter();
     	  if(inventory[i].getId() == item) {
     		  marker = i;
+    		  game.Game.lg.Logbuilder("\r\n item1: " + inventory[i]);
     		  inventory[i] = null;
-    		  i = itemAmount-1;
+    		  game.Game.lg.Logbuilder("\r\n item2: " + inventory[i]);
+    		  game.Game.lg.Logwriter();
+    		  itemAmount = itemCounter();
+    		  i = itemAmount;
     	  }
     	  
       }
       if(marker != -1) {
           for(int i = marker; i < itemAmount-1; i++) {
     	      inventory[i] = inventory[i+1];
+    	      
           }
+          inventory[itemAmount] = null;
       }
+      
+      
     }
     
     
@@ -271,22 +284,37 @@ public class Player {
 			switch(w.getAttributes().getNamedItem("class").getTextContent()) {
 			case("health"): {
 				itemA[i1] = new items.HealthPotion(w);
+				i1++;
 				break;
 			}
 			case("strength"): {
 				itemA[i1] = new items.DamagePotion(w);
+				i1++;
 				break;
 			}
 			
 			
+			
 			}
-			i1++;
+			
 		}
+		/*
+		 * <consumable class="mana" id="1">
+	    <name>ay</name>
+		<desc>man</desc>
+		<img>sex</img>
+		<proc>0</proc>
+		<effecttype>hp</effecttype>
+		<effect>12</effect>
+		<neg>0</neg>
+		<extr></extr>
+	</consumable>
 		for(int i = 0; i < this.nM; i++) {
 			Node w = xHand.NR("quest", i);
 		    itemA[i1] = new items.Quest(w);
 			i1++;
 		}
+		*/
 		
 	}	
 	

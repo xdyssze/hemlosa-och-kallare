@@ -26,6 +26,7 @@ public class Amulet extends Wearable {
 	}
 	@Override
 	public void doEffect() {
+		game.Game.player.equipped[1] = this;
 		if(health) {
 			game.Game.player.hp += this.todo;
 		} else {

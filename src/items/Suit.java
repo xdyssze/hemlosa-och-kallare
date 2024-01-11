@@ -13,11 +13,12 @@ public class Suit extends Wearable {
 	}
 	@Override
 	public int calculateAdd() {
-		return((int)(game.Game.player.bdmg * this.effect));
+		return((int)(game.Game.player.bhp * this.effect));
 	}
 	@Override
 	public void doEffect() {
-		game.Game.player.dmg += this.todo;
+		game.Game.player.equipped[0] = this;
+		game.Game.player.hp += this.todo;
 		
 	}
 	
@@ -29,7 +30,7 @@ public class Suit extends Wearable {
 				i = 69;
 			}
 		}
-		game.Game.player.dmg -= this.todo;
+		game.Game.player.hp -= this.todo;
 		
 	}
 

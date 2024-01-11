@@ -18,6 +18,7 @@ public class Weapon extends Wearable {
 	}
 	@Override
 	public void doEffect() {
+		game.Game.player.equipped[2] = this;
 		game.Game.player.dmg += this.todo;
 		
 	}

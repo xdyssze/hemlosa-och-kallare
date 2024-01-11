@@ -57,7 +57,7 @@ public class Game {
 		Gfx.main(argu);	
 		// kan ändras till false i framtiden om jag vill lägga till sparfiler, säger till i princip att detta är den första gången spelet startas och allt ska skapas p ånytt
 		player = new Player(true);
-		player.iH.debugFillInv();
+		player.debugFillInv();
 		// Start, bestämmer statet som att spelet är färdigt och ska börja köra vanliga spelrutiner.
 	    state = 1;			    
 		}

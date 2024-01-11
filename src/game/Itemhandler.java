@@ -2,7 +2,7 @@ package game;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-
+import items.Item;
 import game.Player.StatEffect;
 import xmlHandler.XmlHandler;
 
@@ -12,7 +12,7 @@ public class Itemhandler {
 	
 	// initialiserar alla variabler
 	static XmlHandler xHand;
-	Item[] itemA;
+	items.Item[] itemA;
 	int nW, nC, nM;
 	game.Player pC;
 	// startar itemhanteraren med sin constructor,
@@ -47,7 +47,22 @@ public class Itemhandler {
 		int i1 = 0;
 		for(int i = 0; i < this.nW; i++) {
 			Node w = xHand.NR("wearable", i);
-			itemA[i1] = new Item(w);
+			switch(w.getAttributes().getNamedItem("class").getTextContent()) {
+			case("amulet"): {
+				itemA[i1] = new items.Amulet(w);
+				break;
+			}
+			case("suit"): {
+				itemA[i1] = new items.Suit(w);
+				break;
+			}
+			case("weapon"): {
+				itemA[i1] = new items.Weapon(w);
+				break;
+			}
+			
+			}
+			itemA[i1] = new items.;
 			i1++;
 		}
 		for(int i = 0; i < this.nC; i++) {
@@ -149,6 +164,7 @@ public class Itemhandler {
     // KLASSER
     
     // klassen föremål
+    /*
 	public static class Item{
 		public String clas, img, effecttype, effect, name, desc, itemtype, extr;
 		
@@ -225,5 +241,5 @@ public class Itemhandler {
 	    
 	
 	// KLASSERS FUNKTIONER
-	    
+	    */
 }

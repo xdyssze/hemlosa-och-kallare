@@ -8,7 +8,9 @@ public class InventoryGUI extends GuiI {
 	
 	public InventoryGUI() {
 		super();
-		itemCount = game.Game.player.iH.itemCounter();
+		itemCount = game.Game.player.itemCounter();
+	    game.Game.lg.Logbuilder("\r\n Mängd föremål enligt gui:" + itemCount);
+	    game.Game.lg.Logwriter();
 		ih = 4;
 		iw = 5;
 		// 16 px bred, 8 px hög e varje låda
@@ -22,8 +24,11 @@ public class InventoryGUI extends GuiI {
     	String[] currentString = game.Game.player.inventory[currentlySelected].getInfo();
     	Gfx.drawBox(16*(currentlySelected%iw), 8*((currentlySelected-(currentlySelected%iw))/iw), (16*(currentlySelected%iw))+15, (8*((currentlySelected-(currentlySelected%iw))/iw))+7, "solid", true);
     	for(int z = 0; z < 4; z++) {
-    	    for(int i = 0; i < 5; i++) {    	 
+    	    for(int i = 0; i < 5; i++) {    
+
     	    	if(i+(z*5) < itemCount) {
+    	    		try {
+    	    		System.out.print("\r\n co: " + game.Game.player.inventory[i+(z*5)] );
     		    Gfx.text(1+(i*16), 1+(z*8), game.Game.player.inventory[i+(z*5)].getName());
     		    for(items.Item obj : game.Game.player.equipped) {
     		    	
@@ -34,6 +39,9 @@ public class InventoryGUI extends GuiI {
     		    	
     		    }
     		    
+    	    	} catch(Exception e) {
+    	    		e.printStackTrace();
+    	    	}
     	    	}
     	    }
     	}
@@ -67,7 +75,7 @@ public class InventoryGUI extends GuiI {
     	
     	for(items.Item obj : game.Game.player.equipped ) {
     		if(obj != null && obj.equals(game.Game.player.inventory[currentlySelected])) {
-    			obj.dequip();;
+    			obj.dequip();
     			eq = true;
     			break;
     		}

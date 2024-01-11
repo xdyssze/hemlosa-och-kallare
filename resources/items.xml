@@ -10,7 +10,7 @@
 		<neg>0</neg>
 		<extr>s</extr>
 	</wearable>
-	<wearable class="weapon" id="1">
+	<wearable class="weapon" id="2">
 	    <name>Knytnävar</name>
 		<desc>Du slåss med dina händer</desc>
 		<img>s</img>
@@ -20,7 +20,7 @@
 		<neg>0</neg>
 		<extr>s</extr>
 	</wearable>
-	<wearable class="amulet" id="1">
+	<wearable class="amulet" id="3">
 	    <name>Slips</name>
 		<desc>Du har en äcklig slips på dig</desc>
 		<img>s</img>
@@ -31,51 +31,31 @@
 		<extr>s</extr>
 	</wearable>
 	
-	<consumable class="mana" id="1">
-	    <name></name>
-		<desc></desc>
-		<img></img>
-		<proc></proc>
-		<effecttype></effecttype>
-		<effect></effect>
+	
+	
+	<consumable class="health" id="4">
+	    <name>sprite</name>
+		<desc>häls</desc>
+		<img>cum</img>
+		<proc>0</proc>
+		<effecttype>hp</effecttype>
+		<effect>10</effect>
 		<neg>0</neg>
 		<extr></extr>
 	</consumable>
 	
-	<consumable class="health" id="1">
-	    <name></name>
-		<desc></desc>
-		<img></img>
-		<proc></proc>
-		<effecttype></effecttype>
-		<effect></effect>
+	<consumable class="strength" id="5">
+	    <name>storstark</name>
+		<desc>styrk</desc>
+		<img>grej</img>
+		<proc>0</proc>
+		<effecttype>dmg</effecttype>
+		<effect>10</effect>
 		<neg>0</neg>
 		<extr></extr>
 	</consumable>
-	
-	<consumable class="strength" id="1">
-	    <name></name>
-		<desc></desc>
-		<img></img>
-		<proc></proc>
-		<effecttype></effecttype>
-		<effect></effect>
-		<neg>0</neg>
-		<extr></extr>
-	</consumable>
-	
-	<consumable class="easter" id="1">
-	    <name></name>
-		<desc></desc>
-		<img></img>
-		<proc></proc>
-		<effecttype></effecttype>
-		<effect></effect>
-		<neg>0</neg>
-		<extr></extr>
-	</consumable>
-	
-	<quest class="quest" id="1">
+
+	<quest class="quest" id="6">
 	    <name></name>
 		<desc></desc>
 		<img></img>
