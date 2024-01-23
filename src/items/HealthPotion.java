@@ -20,7 +20,8 @@ public class HealthPotion extends Consumable{
     }
 	 public void dequip() {
 			
-			
+
+		
 			game.Game.player.hp -= this.todo;
 			
 		}

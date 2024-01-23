@@ -89,6 +89,9 @@ public class Player {
     
     public void removeItem(int item) {
     	int marker = -1;
+    	itemAmount = itemCounter();
+    	game.Game.lg.Logbuilder("Ammount in itemAmount: " + itemAmount);
+    	game.Game.lg.Logwriter();
       for(int i = 0; i < itemAmount; i++) {
     	  game.Game.lg.Logbuilder("sex1 " + item);
     	  game.Game.lg.Logbuilder("sex2 " + inventory[i].getId());
@@ -99,7 +102,6 @@ public class Player {
     		  inventory[i] = null;
     		  game.Game.lg.Logbuilder("\r\n item2: " + inventory[i]);
     		  game.Game.lg.Logwriter();
-    		  itemAmount = itemCounter();
     		  i = itemAmount;
     	  }
     	  
@@ -107,10 +109,11 @@ public class Player {
       if(marker != -1) {
           for(int i = marker; i < itemAmount-1; i++) {
     	      inventory[i] = inventory[i+1];
-    	      
+    	      inventory[i+1] = null;
           }
-          inventory[itemAmount] = null;
+          
       }
+      this.itemAmount = itemCounter();
       
       
     }

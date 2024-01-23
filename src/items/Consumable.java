@@ -50,8 +50,7 @@ public abstract class Consumable implements Item {
 	public void equip() {
 		doEffect();
 		if(this.temp) {
-			game.Game.lg.Logbuilder("sex " + id);
-			game.Game.lg.Logwriter();
+			game.Game.menhand.gui.currentlySelected -= 1;
 			game.Game.player.removeItem(this.id);
 		}
 	}

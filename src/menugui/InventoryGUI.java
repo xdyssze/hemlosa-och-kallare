@@ -8,11 +8,10 @@ public class InventoryGUI extends GuiI {
 	
 	public InventoryGUI() {
 		super();
-		itemCount = game.Game.player.itemCounter();
+		calculateItemWidth();
 	    game.Game.lg.Logbuilder("\r\n Mängd föremål enligt gui:" + itemCount);
 	    game.Game.lg.Logwriter();
-		ih = 4;
-		iw = 5;
+		this.ih = 5;
 		// 16 px bred, 8 px hög e varje låda
 		// TODO Auto-generated constructor stub
 	}
@@ -28,7 +27,6 @@ public class InventoryGUI extends GuiI {
 
     	    	if(i+(z*5) < itemCount) {
     	    		try {
-    	    		System.out.print("\r\n co: " + game.Game.player.inventory[i+(z*5)] );
     		    Gfx.text(1+(i*16), 1+(z*8), game.Game.player.inventory[i+(z*5)].getName());
     		    for(items.Item obj : game.Game.player.equipped) {
     		    	
@@ -74,7 +72,8 @@ public class InventoryGUI extends GuiI {
     	boolean eq = false;
     	
     	for(items.Item obj : game.Game.player.equipped ) {
-    		if(obj != null && obj.equals(game.Game.player.inventory[currentlySelected])) {
+    		if(obj != null && obj.equals(game.Game.player.inventory[this.currentlySelected])) {
+    			
     			obj.dequip();
     			eq = true;
     			break;
@@ -83,9 +82,15 @@ public class InventoryGUI extends GuiI {
     	if(!eq) {
     		game.Game.player.inventory[currentlySelected].equip();
     	}
-    	
-    	String r = Gfx.segToString();
-		game.Update.CLS();
-		System.out.print(r);	
+    	calculateItemWidth();
+    	drawMenu();
     }
+	public void calculateItemWidth() {
+		this.itemCount = game.Game.player.itemCounter();
+		if(this.itemCount <= 4) {
+			this.iw = (byte) this.itemCount;
+		} else {
+			this.iw = 4;
+		}
+	}
 }
