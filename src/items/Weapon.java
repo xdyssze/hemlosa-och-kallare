@@ -1,5 +1,8 @@
 package items;
 import org.w3c.dom.Node;
+
+
+// samma som innan
 public class Weapon extends Wearable {
     String attackTypes;
     int todo;

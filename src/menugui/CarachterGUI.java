@@ -2,7 +2,8 @@ package menugui;
 
 import game.Player;
 import gfxproc.Gfx;
-
+// alla guis e i princip likadana. De är baserade på en GuiI abstract klass, som är meny föremålet skapas av.
+// De ritar menyn, innehåller värden för vad som är selectat, bestämmer vad som händer vid interaktion osv.
 public class CarachterGUI extends menugui.GuiI{
 	
 	

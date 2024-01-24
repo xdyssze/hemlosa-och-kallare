@@ -19,7 +19,7 @@ public class Player {
 	public double bsp;
 	
 	public static XmlHandler xHand;
-    StatEffect[] activeEffects;
+    
 	public Item[] inventory;
 	int itemAmount;
 	int nW, nC, nM;
@@ -34,7 +34,7 @@ public class Player {
     	pls = new PlayerSprite();
     	pls.cs = 3;
     	aQ = 2;
-    	activeEffects = new StatEffect[20];
+    	
     	if(init) {
     	// värden av init
     		// Arrays så jag kan bestämma mer än siffror, egentligen bör jag ha 
@@ -45,8 +45,6 @@ public class Player {
     		hp = bhp;
     		dmg = bdmg;
     		sp = bsp;
-    		
-    		
     		// detta är för items
     		LoadItemsFromXML();
     		this.nW = xHand.NodeCounter(null, "wearable");
@@ -70,38 +68,14 @@ public class Player {
     }
     
     // FUNKTIONER AV FÖRÄLDRAKLASSEN
-    public void healthEffect(boolean neg, boolean proc, double effect) {
-    	if(proc) {
-    		if(neg) {
-        	    hp = ((hp/100)*(100-effect));
-        	} else {
-        		 hp = ((hp/100)*(100+effect));
-        	}
-	    } else {
-	    	if(neg) {
-	    		hp -= effect;
-	    	} else {
-	    		hp += effect;
-	    	}
-	    }
-    	
-    }
-    
+    // tar bort ett föremål från inv och updaterar counten av föremål i inv
     public void removeItem(int item) {
     	int marker = -1;
     	itemAmount = itemCounter();
-    	game.Game.lg.Logbuilder("Ammount in itemAmount: " + itemAmount);
-    	game.Game.lg.Logwriter();
       for(int i = 0; i < itemAmount; i++) {
-    	  game.Game.lg.Logbuilder("sex1 " + item);
-    	  game.Game.lg.Logbuilder("sex2 " + inventory[i].getId());
-			game.Game.lg.Logwriter();
     	  if(inventory[i].getId() == item) {
     		  marker = i;
-    		  game.Game.lg.Logbuilder("\r\n item1: " + inventory[i]);
     		  inventory[i] = null;
-    		  game.Game.lg.Logbuilder("\r\n item2: " + inventory[i]);
-    		  game.Game.lg.Logwriter();
     		  i = itemAmount;
     	  }
     	  
@@ -119,148 +93,16 @@ public class Player {
     }
     
     
-    public void damageEffect(boolean neg, boolean proc, double effect) {
-    	if(proc) {
-    		if(neg) {
-        	    dmg = ((dmg/100)*(100-effect));
-        	} else {
-        		 dmg = ((dmg/100)*(100+effect));
-        	}
-	    } else {
-	    	if(neg) {
-	    		dmg -= effect;
-	    	} else {
-	    		dmg += effect;
-	    	}
-	    }
-    	
-    }
-    // detta går att förbättras med inhertance och föräldraklasser. Alternativt att en effect är en funktion i princip, med enkel beräkning.
-    /*
-    public void calculateStat() {
-    	double con1, con2, con3;
-    	con1 = bhp;
-    	con2 = bdmg;
-    	con3 = bsp;
-    	
-    	// SÅ ATT VI RÄKNAR PROC FÖRST
-    	for(StatEffect obj : activeEffects) {
-    		if(obj != null) {
-    		    if(obj.proc) {
-        	    switch(obj.efOn) {
-        	        case("dmg"): {
-            		    if(obj.neg) {
-                	        con2 = ((bdmg/100)*(100-(Double.valueOf(obj.value))));
-                	    } else {
-                		     con2 = ((bdmg/100)*(100+(Double.valueOf(obj.value))));
-                	    }
-        		        break;
-        	        }
-        	        case("hp"): {
-        	        	if(obj.neg) {
-                	        con1 = ((bhp/100)*(100-(Double.valueOf(obj.value))));
-                	    } else {
-                		     con1 = ((bhp/100)*(100+(Double.valueOf(obj.value))));
-                	    }
-        		        break;
-        	        }
-        	        case("sp"): {
-        	        	if(obj.neg) {
-                	        con3 = ((bsp/100)*(100-(Double.valueOf(obj.value))));
-                	    } else {
-                		    con3 = ((bsp/100)*(100+(Double.valueOf(obj.value))));
-                	    }
-        		        break;
-        	        }
-        	    }
-    		}
-    		}
-        }
-    	
-    	for(StatEffect obj : activeEffects) {
-    		if(obj != null) {
-    		if(!obj.proc) {
-        	switch(obj.efOn) {
-        	case("dmg"): {
-        	    	if(obj.neg) {
-        	    		con2 -= (Double.valueOf(obj.value));
-        	    	} else {
-        	    		con2 += (Double.valueOf(obj.value));
-        	    	}
-        	    
-        		break;
-        	}
-        	case("hp"): {
-    	    	if(obj.neg) {
-    	    		con1 -= (Double.valueOf(obj.value));
-    	    	} else {
-    	    		con1 += (Double.valueOf(obj.value));
-    	    	}
-        		break;
-        	}
-        	case("sp"): {
-    	    	if(obj.neg) {
-    	    		con3 -= (Double.valueOf(obj.value));
-    	    	} else {
-    	    		con3 += (Double.valueOf(obj.value));
-    	    	}
-        		break;
-        	}
-        	}
-    		}
-        }
-    	}
-    	hp = con1;
-    	dmg = con2;
-    	sp = con3;
-    	
-    	
-     }
-     public void addEffect(StatEffect s) {
-    	activeEffects[addToEnd()] = s;
-    	reOrgStat();
-    	calculateStat();
-    }
-    public StatEffect findEffect(String s) {
-    	for(StatEffect obj : activeEffects) {
-    	    if(obj != null){
-    	    	if(obj.name.equals(s)) {
-    	    		return(obj);
-    	    	}
-    	    }
-    	}
-    	return(null);
-    }
-    public void removeEffect(StatEffect s)  {
-    	for(byte i = 0; i < activeEffects.length; i++) {
-    		if(activeEffects[i] != null && activeEffects[i].equals(s)) {
-    			activeEffects[i] = null;
-    		}
-    	}
-    	reOrgStat();
-    	calculateStat();
-    }
-    
-    
-    */
-    
-    
-    
-    
-    
-    // undra ifall det inte är smartare att bara göra om allt ist, Stateffect är i princip onödigt.
-    // man kan ist bara ha items som equipas och dequipas, och 
-    
-    
-    
-	// skapar föremål genom att gå igenom alla xmlnoder och ta deras atribut, sedan stoppa in dem i ett nytt item som går rakt in i itemarrayen.
-	public void debugFillInv() {
+    // debug funktion som fyller inventoryt med alla möjliga föremål
+    	public void debugFillInv() {
 		int is = 0;
 		for(Item obj : itemA) {
 			game.Game.player.inventory[is] = obj;
 			is++;
 		};
 	}
+    	
+    // läser in alla föremål som kan finnas in i minne från xml fil.
 	public void createItems() {
 		int i1 = 0;
 		for(int i = 0; i < this.nW; i++) {
@@ -301,26 +143,8 @@ public class Player {
 			}
 			
 		}
-		/*
-		 * <consumable class="mana" id="1">
-	    <name>ay</name>
-		<desc>man</desc>
-		<img>sex</img>
-		<proc>0</proc>
-		<effecttype>hp</effecttype>
-		<effect>12</effect>
-		<neg>0</neg>
-		<extr></extr>
-	</consumable>
-		for(int i = 0; i < this.nM; i++) {
-			Node w = xHand.NR("quest", i);
-		    itemA[i1] = new items.Quest(w);
-			i1++;
-		}
-		*/
-		
-	}	
-	
+	}
+	// räknar mängden föremål i inventoryt
 	public int itemCounter() {
 		int count = 0;
 		for(Item ob : this.inventory) {
@@ -335,32 +159,8 @@ public class Player {
     	xHand = new XmlHandler("items", false);
     }	
     // KLASSER
-    static public class StatEffect {
-    	
-    	byte state;
-    	boolean neg, proc; 
-    	String efOn, name, desc, value;
-    	public StatEffect(String nam, String des, String efO, String v, boolean ne, boolean pro) {
-    		if(!nam.isEmpty()) {
-    			this.value = v;
-    			this.proc = pro;
-    			this.neg = ne;
-        		this.efOn = efO;
-        		this.name = nam;
-        		this.desc = des;
-        		this.state = 1;
-    		} else {
-    			this.state = 0;
-    		}
-    		
-    		
-    	}
-    }
     
-    
-    
-    
-    // spelarsprites
+    // Hanterar spelarspriten, vilken sprite som ska visas
     public class PlayerSprite {
     	String[] standardSprites;
     	byte cmPos;
@@ -423,10 +223,7 @@ public class Player {
     			cmPos++;
     			break;
     		}
-    		//case('*'): {
-    		//	cs = 3;
-    		//	break;
-    		//}
+    		
     		
     	}
     	}
@@ -435,24 +232,5 @@ public class Player {
     
     
     // Misc
-    public int addToEnd() {
-    	for(int i = 0; i < activeEffects.length; i++) {
-			   if(activeEffects[i] == null) {
-				   return(i);
-			   }			   
-		   }
-    	return(0);
-    }
-    public void reOrgStat() {
-    	StatEffect[] temp = new StatEffect[20];
-    	byte temps = 0;
-    	for(byte i = 0; i < activeEffects.length; i++) {
-    		if(activeEffects[i] != null) {
-    			temp[temps] = activeEffects[i];
-    			temps++;
-    		}
-    	}
-    	activeEffects = temp;
-    }
     
 }

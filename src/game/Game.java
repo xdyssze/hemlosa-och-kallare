@@ -9,7 +9,7 @@ import gfxproc.Maphandler;
 import logger.Logcreator;
 
 
-
+// huvud game funktionen som körs vid programstart
 public class Game {
 	
 	// definierar lite variabler här
@@ -32,12 +32,15 @@ public class Game {
 		// Startar startup funlktionen
 		startup();
 	}
-	
+	// initiering processen
 	public static void startup() {		
 		// Ascii art show i princip, rensar skärmen och visar steffe, sedan sover i 2000 milisec
 		Gfx.CLS();	
 		System.out.println(Game.ascii);
-		Sleep(2000);
+		System.out.println("\r\nVälkommen till hemlösa och källare! Du kommer nu kastas in i spelet. \r\n	"
+				+ "Inne i spelet kommer du kunna gå runt med W-Upp, A-Vänster, S-Nedåt, D-Höger. \r\n		"
+				+ "För att öppna inventarie och menyer trycker du på 'i', och interagerar med mellanslag");
+		Sleep(5000);
 		// Thread Start, progressbar
 		// startar update som i princip är en klocka och bestämmer allt som händer i en ny tråd.
 		state = 0;					

@@ -201,7 +201,7 @@ public class Keyboard_handler implements NativeKeyListener {
     	}
     }
     
-    // Key nertryckt
+    // körs om tangent nertryckt, tangenten är e
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		boolean alreadypressed = false;
 		Game.lg.Logbuilder("KEY: " +  NativeKeyEvent.getKeyText(e.getKeyCode()) + " Has been pressed");
@@ -239,6 +239,7 @@ public class Keyboard_handler implements NativeKeyListener {
 		ciq++;
 		}
 	}
+	// körs om den släpps
 	public void nativeKeyReleased(NativeKeyEvent e) {
 		char[] temp = new char[5];
 		int p = 0;
@@ -269,7 +270,7 @@ public class Keyboard_handler implements NativeKeyListener {
 		ciq--;
 	}	
 	
-	
+	// rensar tangentbordskön
 	public static void clearQue() {
 		keyq = new char[5];
 	}

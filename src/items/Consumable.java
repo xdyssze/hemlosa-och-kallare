@@ -2,7 +2,7 @@ package items;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-
+// abstract klass för alla konsumerbara föremål
 public abstract class Consumable implements Item {
 	String image, name, desc;
 	xmlHandler.XmlHandler xHand = game.Game.player.xHand;
@@ -29,10 +29,11 @@ public abstract class Consumable implements Item {
 		
 		
 	}
-	
+	// returnerar idt av föremålet
 	public int getId() {
 			return(this.id);
 		}
+	// returnerar infon av föremålet i en array
 	public String[] getInfo() {
 		String[] temp = new String[7];
 		temp[0] = String.valueOf(this.proc);
@@ -44,9 +45,11 @@ public abstract class Consumable implements Item {
 		temp[6] = this.getClass().getSimpleName();
 		return(temp);
 	}
+	// returnerar föremålets namn
 	public String getName() {
 		return(this.name);
 	}
+	// equippar föremålet
 	public void equip() {
 		doEffect();
 		if(this.temp) {
@@ -54,7 +57,7 @@ public abstract class Consumable implements Item {
 			game.Game.player.removeItem(this.id);
 		}
 	}
-	
+	// abstract
 	public abstract void doEffect();
 	
 	

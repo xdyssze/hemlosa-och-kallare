@@ -1,5 +1,5 @@
 package menugui;
-
+// bestämmer funktionerna av de olika menyklasserna
 public abstract class GuiI {
 	public byte height, width, sh, sw, iw, ih;
 	public int currentlySelected;
@@ -10,7 +10,8 @@ public abstract class GuiI {
 	}
 	
     abstract void drawMenu();
-    abstract void action();    
+    abstract void action();   
+    // kollar om det går att röra på sig åt ett håll ,så inte saker går out of bounds.
     public boolean checkmv(char dir) {
 		switch(dir) {
 		case('a'): {

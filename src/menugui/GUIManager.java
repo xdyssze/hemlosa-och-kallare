@@ -10,6 +10,7 @@ public class GUIManager {
 		currentGUI = "";
 
 	}
+	// bestämmmer vilket gui som visas
     public void setGUI(String g) {
     	switch(g) {
     	case("esc"): {
@@ -33,21 +34,22 @@ public class GUIManager {
     	drawGUI();
     	currentGUI = g;
     }
-    
+    // ritar guit.
     public void drawGUI() {
     	gui.drawMenu();
     }
     
     
     
-    // flyttar
-    
+    // flyttar currently selected om det går.
+   
     
     public void mvPos(char d, int s) {
     	if(gui.checkmv(d)) {
     		gui.currentlySelected = (byte) s;
     	};
     }
+    // kör action.
     public void action() {
     	gui.action();
     }

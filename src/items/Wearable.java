@@ -2,6 +2,8 @@ package items;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+
+// nästan samma som innan, lite skillnader i funktionerna.
 public abstract class Wearable implements Item {
     String image, name, desc;
     xmlHandler.XmlHandler xHand = game.Game.player.xHand;
@@ -30,7 +32,7 @@ public abstract class Wearable implements Item {
 	}
 
 	public int getId() {
-		return(id);
+		return(this.id);
 	}
 	public String[] getInfo() {
 		String[] temp = new String[7];

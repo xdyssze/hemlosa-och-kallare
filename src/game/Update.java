@@ -21,7 +21,7 @@ public class Update implements Runnable{
 	
 	//
 	
-
+    // körs i sin egna tråd, håller spelet konstant uppdaterande
 	public void run() {
         
         switch(game.Game.state) {
@@ -56,6 +56,7 @@ public class Update implements Runnable{
             }
         }
 	}
+	// renderar en progress bar
 	public void prgbar() {
 		
 		var i = 0;
@@ -76,6 +77,7 @@ public class Update implements Runnable{
 		
 		run();
 	}
+	// standard uppdateringarna i spelet
 	public void up() {		
 		long t1, t2;
 		while(game.Game.state == 1) {	
@@ -102,6 +104,7 @@ public class Update implements Runnable{
 		run();
 		
 	}
+	// visar menyn
     public void menu() {
     	//String r = Gfx.segToString();
     	while(game.Game.state == 3) {	
@@ -122,7 +125,7 @@ public class Update implements Runnable{
     
     // timing functions
     
-    
+    // rensar skärmen
 	public static void CLS() {
 		System.out.print("\033[H\033[2J");  
 		System.out.flush();
@@ -135,6 +138,7 @@ public class Update implements Runnable{
 	    }
 	    */
 	}
+	// tvingar tråden att sova
 	private static void Sleep(int to) {
 		try {
 									

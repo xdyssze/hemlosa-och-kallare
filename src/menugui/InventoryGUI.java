@@ -19,8 +19,10 @@ public class InventoryGUI extends GuiI {
 	@Override
     public void drawMenu() {
 		Gfx.clearSec();
+		String[] currentString = {};
     	// ritar föremål i inventory, varje objekt 16 px bred, 8 px hög.
-    	String[] currentString = game.Game.player.inventory[currentlySelected].getInfo();
+		try {
+    	currentString = game.Game.player.inventory[currentlySelected].getInfo();
     	Gfx.drawBox(16*(currentlySelected%iw), 8*((currentlySelected-(currentlySelected%iw))/iw), (16*(currentlySelected%iw))+15, (8*((currentlySelected-(currentlySelected%iw))/iw))+7, "solid", true);
     	for(int z = 0; z < 4; z++) {
     	    for(int i = 0; i < 5; i++) {    
@@ -43,8 +45,11 @@ public class InventoryGUI extends GuiI {
     	    	}
     	    }
     	}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     	// ritar desc ruta
-    	
+    	try {
     	Gfx.drawBox(0, 32, 79, 39, "solid", true);
     	if(game.Game.player.inventory[currentlySelected] != null) {
     		// desc
@@ -62,9 +67,14 @@ public class InventoryGUI extends GuiI {
     	Gfx.text(32, 36, "type: " + currentString[6]);
     	
     	}
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
     	String r = Gfx.segToString();
+    	
 		game.Update.CLS();
 		System.out.print(r);	
+		
     }
 	
 	@Override

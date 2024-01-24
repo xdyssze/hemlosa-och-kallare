@@ -137,7 +137,7 @@ public class Gfx {
 		}
 	
 	// SPRITES
-	
+	// denna hanterar sprites som en helhet
 	public static class SpriteHandler {
 		public static void main() {
 			        
@@ -186,6 +186,7 @@ public class Gfx {
 			        }
 					
 		}
+		// letar upp en sprite ur spritelistan av alla sprites
 		public static Sprite nF(String name) {
 			for(int i = 0; i < sprites.length; i++) {
 				if(sprites[i].name == name) {
@@ -194,6 +195,7 @@ public class Gfx {
 			} 
 			return(null);			
 		}
+		// letar upp en sprite utifrån id och typ, baserat på att alla individuella ids sparas i olika arrays
 		public static Sprite idtF(int id, String type) {
 			switch(type) {
 			case("player"): {
@@ -208,9 +210,11 @@ public class Gfx {
 			}
 			return(null);
 		}
+		// ger dig en specifik sprite utifrån id
 		public static Sprite idF(int id) {
 			return(sprites[id]);
 		}
+		// Letar efter rätt typ av sprite för rätt komando, i princip kallas denne för att hitta sprite
 		public static Sprite SpriteF(String[] arg) {
 			if(arg.length == 2) {
 				return(idtF(Integer.valueOf(arg[0]), arg[1]));
@@ -224,16 +228,18 @@ public class Gfx {
 			}		    			
 			
 		}
-		
+		// returnerar sprite bilden
 		public static String SpriteS(String[] arg) {
 			Sprite sss = SpriteF(arg);
 			return(sss.s);
 		}
+		// returnerar sprite storleken
 		public static int[] SpriteSize(String[] arg) {
 			Sprite f = SpriteF(arg);    
 			int[] r = {f.sx, f.sy};
 			return(r);		    
 		}
+		// returnerar sprite positionen
 		public static int[] SpritePos(String[] arg) {
 			Sprite f = SpriteF(arg);
 			int[] r = {f.px, f.py};
@@ -243,7 +249,8 @@ public class Gfx {
 			return(SpriteF(arg).name);
 		}
 	}
-	
+	// I princip en sprite är en textur med en viss storlek, en gemensam klass för att kunna anvönda sprite objekt
+	// ist för bara strings
 	public static class Sprite {
 		int id, sid, sx, sy, px, py;
 		String s, type, name;
@@ -274,7 +281,7 @@ public class Gfx {
 	// ARtS AND CRAFTS
 	
 	
-	
+	// denna ritar en låda på skärmen utifrånn vissa parametrar
 	public static void drawBox(int x, int y, int xx, int yy, String style, boolean trans) {
 		byte xd;
 		char lc;
@@ -323,7 +330,7 @@ public class Gfx {
 			e.printStackTrace();
 		}
 	}
-	
+	// ritar text på skärmen, genom att modifiera pixelarrayen som printas varje frame
 	public static void text(int x, int y, String t) {
 		char[] a = t.toCharArray();
 		for(int i = 0; i < t.length(); i++) {
@@ -332,6 +339,7 @@ public class Gfx {
 	}
 	
 	// RANDOM ACCESSORY FUNCTIONS
+	// lägger till siffror / nummer eller liknande till slutet av arrays.
 	public static void addToEnd(int[] a, int v, String[] as, String vs) {
 		   if(a == null) {
 			   for(int i = 0; i < as.length; i++) {
@@ -352,7 +360,7 @@ public class Gfx {
 			   }
 		   }		
 		}
-	
+	// rensar skärmen, ej använd längre
 	public static void CLS(){   
 	    try {
 	        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -360,7 +368,7 @@ public class Gfx {
 	}
     
 	
-
+    // initierar alla arrays med default värden.
     public static int[] initArray(int s) {
     	int[] a = new int[s];
 	    for(int i = 0; i < a.length; i++) {

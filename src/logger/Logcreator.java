@@ -1,18 +1,23 @@
 package logger;
 
 import java.io.IOException;
+
+
 import java.nio.file.Files;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
+
+// egna generiska klass, skapar loggar i en log folder.
 public class Logcreator {
 	
 	public static String date;
 
 	static Path fname;
 	private String logBuffer;
+	// initierar klassen
     public Logcreator () {
     	    logBuffer = "";
     		DateTimeFormatter d = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
@@ -30,10 +35,11 @@ public class Logcreator {
     		}
     	
     }
+    // lägger till en text till loggbuffren
     public void Logbuilder(String ev) {
     	logBuffer += LocalDateTime.now() + ":   " + ev + "\r\n ";
     }
-    
+    // skriver ut logbuffern till logfilen, om den ej finns skapas den. Logbuffer clearas.
     public boolean Logwriter() {
     	
     	try {

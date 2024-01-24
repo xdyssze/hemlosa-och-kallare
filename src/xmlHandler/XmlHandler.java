@@ -8,7 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import game.Game;
-
+// primär självskriven xml hanterare / parser. Man matar in en xml fil och den hanterar allt med den.
 public class XmlHandler {
     Document doc;
     public Element main;
@@ -40,11 +40,11 @@ public class XmlHandler {
 		
 	}	
 	
-	
+	// räknar mängden childnodes av en node.
 	public int ChildNodeLength(Node n) {
 		return(((NodeList) n).getLength());
 	}
-	
+	// räknar mängden nodes med ett visst namn
 	public int NodeCounter(Node f, String name) {
 		int i1 = 0;
 		if(f == null) {
@@ -58,10 +58,11 @@ public class XmlHandler {
 		return(i1);
 	}
 	
-	
+	// räknar längden av nodsen, hur många tot.
 	public int NodeLength() {
 		return(Integer.parseInt(param[0]));
 	}
+	// ger en lista på nodes med ett visst namn
 	public Node NRList(String name) {
 		for(int i = 0; i < NodeLength(); i++) {
 			if(this.nHand[i].getNodeName() == name) {
@@ -72,6 +73,7 @@ public class XmlHandler {
 		return(null);
 		
 	}
+	// läser en viss node
 	public Node NR(String name, int Item) {
 		int i1 = 0;
 		Node[] tempNode = new Node[NodeLength()];
@@ -89,6 +91,7 @@ public class XmlHandler {
 		}
 		
 	}
+	// ger tillbaka nodens textinnehåll
 	public String getNodeText(String name, Node n) {
 		for(int i = 0; i < ChildNodeLength(n); i++) {
 			Node sex = n.getChildNodes().item(i);
@@ -102,7 +105,7 @@ public class XmlHandler {
         ErrorWriter("No TextNode With the name " + name + " was found");
         return(null);
 	}
-	
+	// custom errorwriter för logbuilder.
 	public void ErrorWriter(String e) {
 		StackTraceElement[] STE = Thread.currentThread().getStackTrace();
 		StackTraceElement f = STE[2] ;

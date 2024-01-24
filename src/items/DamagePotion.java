@@ -1,5 +1,8 @@
 package items;
 import org.w3c.dom.Node;
+
+// samma som tidigare funktion
+
 public class DamagePotion extends Consumable {
     // jag vill göra all logik i förtid, jag gör det i constructorn
 	int todo;

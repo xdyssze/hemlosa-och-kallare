@@ -133,6 +133,7 @@ public class Maphandler {
     	} 
     	return("do");
     }
+    // ritar kartan till map arrayen
 	public char maprender(int x, int y) {
 		
 		ym = (int)(Game.tpposy-16);

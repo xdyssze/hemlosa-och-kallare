@@ -4,6 +4,7 @@ package menugui;
 import game.Game;
 import  gfxproc.Gfx;
 /// ska rita på en bit av skärmen, nedifrånn, pausa spelet, 
+// typ samma
 public class EscGUI extends menugui.GuiI{
     public String[] menuItems;
     
